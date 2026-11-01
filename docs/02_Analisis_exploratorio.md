@@ -1,4 +1,4 @@
-# Análisis exploratorio: descripción del dataset
+# ANÁLISIS EXPLORATORIO - DESCRIPCIÓN DEL DATASET
 
 ## 1. Descripción general
 
@@ -49,7 +49,7 @@ Estas cifras corresponden al dataset cargado inicialmente, antes de los
 filtros y las transformaciones posteriores realizados durante el
 trabajo.
 
-## 4. Variables disponibles
+## 4. Variables disponibles originalmente
 
   -----------------------------------------------------------------------
   Variable                            Descripción
@@ -83,7 +83,6 @@ trabajo.
 
 ## 5. Tipos de datos
 
-
   -----------------------------------------------------------------------
   Variable                Tipo de dato en pandas  Tipo de información
   ----------------------- ----------------------- -----------------------
@@ -112,29 +111,148 @@ trabajo.
   -----------------------------------------------------------------------
 
 En esta versión, `id` es la única columna reconocida como numérica
-(`int64`); las otras ocho columnas aparecen con tipo `object`. Esto
-describe cómo están almacenados los datos en el DataFrame y no
-necesariamente su naturaleza semántica. Por ejemplo, las fechas están
-representadas como texto y podrían convertirse a un tipo temporal
-durante una etapa posterior de preparación.
+(`int64`); las otras ocho columnas aparecen con tipo `object`. 
+Las fechas están representadas como texto y podrían convertirse a un tipo temporal
+pero EL PROCESAMIENTO DE DICHOS TEXTOS NO SERÁ TENIDO EN CUENTA dentro del alcance de este proyecto.
+
+---
+
+# Reporte de Limpieza y Estandarización del Dataset
+
+## DETECCIÓN DE VALORES NULOS - DUPLICADOS - INCOSISTENCIAS (EN EL DATASET)
+
+### No se detectaron valores duplicados
+
+## Conteo de Valores Nulos
+
+A continuación se presenta la cantidad de valores nulos detectados en cada una de las columnas del dataset, ordenados de mayor a menor frecuencia:
+```
+| Columna | Valores Nulos |
+| :--- | :---: |
+| `state` | **8,714** |
+| `duration` | **4,372** |
+| `shape` | **4,098** |
+| `city` | **261** |
+| `occurred_date_time` | **61** |
+| `summary` | **37** |
+```
+---
+
+## Estandarización de la Variable Objetivo (`shape`)
+
+Para homogenizar las distintas variantes del campo `shape` (forma)
+se aplicó un diccionario de reemplazo que unifica el formato a mayúscula inicial (Title Case) y corrige sinónimos o variaciones especiales.
+
+### Diccionario de Transformación (Python)
+
+```python
+# Diccionario para unificar variaciones de shape
+reemplazos_shape = {
+    # Minúsculas a su formato con mayúscula inicial
+    "light": "Light",
+    "other": "Other",
+    "triangle": "Triangle",
+    "circle": "Circle",
+    "sphere": "Sphere",
+    "cylinder": "Cylinder",
+    "rectangle": "Rectangle",
+    "cigar": "Cigar",
+    "fireball": "Fireball",
+    "oval": "Oval",
+    "delta": "Delta",
+    "unknown": "Unknown",
+    "flash": "Flash",
+    "egg": "Egg",
+
+    # Sinónimos o variantes especiales
+    "TRIANGULAR": "Triangle",
+    "changed": "Changing",
+    "changing": "Changing"
+}
+```
+---
+
+# DICCIONARIO DE DATOS
+
+## 1. Descripción de las variables
+
+Traducciones al español y la terminología utilizada en el proyecto de Aprendizaje Automático.
+
+
+| Nombre de la columna | Traducción al español | Descripción |
+|---|---|---|
+| `id` | Identificador | Identificador numérico único del reporte. |
+| `occurred_date_time` | Fecha y hora del avistamiento | Fecha y hora informadas en las que ocurrió el avistamiento. |
+| `city` | Ciudad | Ciudad asociada al lugar del avistamiento. |
+| `state` | Estado o región | Estado o región administrativa donde se informó el avistamiento. |
+| `shape` | Forma | Forma aparente del objeto descrita por el testigo. Es la variable objetivo del proyecto. |
+| `duration` | Duración | Tiempo de duración del avistamiento, expresado originalmente como texto. |
+| `summary` | Resumen | Resumen textual de la descripción proporcionada por el testigo. |
+| `details_url` | URL del reporte detallado | Dirección web que permite acceder al reporte original en NUFORC. |
+| `posted_date` | Fecha de publicación | Fecha en la que el reporte fue publicado en NUFORC. |
+
+## 2. Categorías de la variable objetivo `shape`
+
+La variable `shape` es la forma aparente del objeto descrita por el testigo. 
+Es una variable categórica nominal que constituye el objetivo de la clasificación supervisada multiclase.
+
+### Otras categorías de valores posibles de `shape` (Forma del OVNI)
+
+| Categoría (inglés) | Traducción al español |
+|---|---|
+| `Light` | Luz |
+| `Circle` | Círculo |
+| `Triangle` | Triángulo |
+| `Fireball` | Bola de fuego |
+| `Sphere` | Esfera |
+| `Disk` | Disco |
+| `Oval` | Ovalado |
+| `Formation` | Formación |
+| `Changing` | Cambiante |
+| `Cigar` | Cigarrillo o forma cilíndrica |
+| `Diamond` | Diamante |
+| `Cylinder` | Cilindro |
+| `Rectangle` | Rectángulo |
+| `Flash` | Destello |
+| `Teardrop` | Lágrima |
+| `Cone` | Cono |
+| `Cross` | Cruz |
+| `Chevron` | Chevrón o forma de V |
+| `Egg` | Huevo |
+| `Unknown` | Desconocido |
+| `Other` | Otra forma |
+
+## 3. Glosario de términos
+
+| Término | Significado | Descripción |
+|---|---|---|
+| **Sighting** | Avistamiento | Observación visual de un objeto o fenómeno, generalmente realizada por uno o varios testigos. |
+| **UFO** | Unidentified Flying Object (Objeto Volador No Identificado - OVNI) | Término utilizado para describir un objeto observado en el cielo cuya identidad no ha podido determinarse. |
+| **UAP** | Unidentified Anomalous Phenomena (Fenómenos Anómalos No Identificados) | Término más amplio que UFO, utilizado para referirse a fenómenos anómalos que no han podido identificarse en diferentes entornos. |
+
+## 4. Consideraciones sobre las variables
+
+- **Variable objetivo (`shape`):** Es la categoría que el modelo de aprendizaje automático intentará predecir.
+- **Variables predictoras:** podrán seleccionarse a partir de las características temporales, geográficas y de duración de los avistamientos.
+- **Identificadores y referencias:** `id` y `details_url` se utilizan principalmente para identificar y consultar los registros, por lo que no se consideran inicialmente variables predictoras.
+- **Información textual:** `summary` contiene descripciones de los testigos, no se tendrá en cuenta para los análisis.
+- **Fecha de publicación:** `posted_date` puede utilizarse para generar características temporales y evaluar su posible aporte al modelo.
+
+
 
 ## 6. Consideraciones sobre el dataset
 
-La variable `shape` contiene las categorías descriptivas de la forma
-registrada en cada reporte y se utiliza como objetivo de clasificación
-multiclase. Las demás variables constituyen la información disponible
-para estudiar y preparar posibles características predictoras, de
-acuerdo con el alcance del proyecto.
-
 La cantidad de registros y los tipos de datos indicados corresponden a
-la carga inicial observada en el notebook. Los valores ausentes, las
-inconsistencias, las categorías poco frecuentes y las transformaciones
-que se apliquen se documentarán en las etapas correspondientes del
+la carga inicial observada en el notebook 01_Limpieza_y_Preprocesamiento.ipynb.
+
+Los datos nulos, las inconsistencias, las categorías poco frecuentes y las transformaciones
+que se apliquen se documentarán en las etapas posteriores del
 proyecto, sin confundir esta descripción del origen y la composición del
 dataset con el informe completo del análisis exploratorio o del
 preprocesamiento.
 
-> **Nota:** los reportes representan descripciones aportadas por
+> **Nota:** los reportes son descripciones aportadas por los 
 > testigos y recopiladas por NUFORC. La categoría `shape` refleja la
-> forma reportada; no constituye una verificación independiente de la
+> forma reportada; no es una verificación independiente de la
 > naturaleza del objeto observado.
+
