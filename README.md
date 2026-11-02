@@ -19,7 +19,12 @@ El modelo intentará predecir la categoría de forma de un reporte, pero cabe ac
 
 # Tipo de problema
 
-Clasificación supervisada multiclase
+## Clasificación supervisada multiclase
+
+## Problema planteado para resolver con un modelo de aprendizaje automático 
+
+¿Es posible predecir con precisión la forma de un objeto volador no identificado a partir de las 
+características temporales, geográficas, de duración de los avistamientos? 
 
 # Objetivo General
 
@@ -28,9 +33,10 @@ Se busca identificar patrones y evaluar la capacidad de los modelos de aprendiza
 
 Clasificación: el modelo asigna una categoría
 Predicción: el modelo estima cuál es la categoría más probable según los patrones aprendidos
-Variable objetivo: shape (forma reportada del objeto según los testigos)
 
-Cabe aclarar que no anticipará cuándo o dónde ocurrirá un avistamiento; No identifica visualmente el objeto ni verifica qué era realmente.
+**Variable objetivo: shape (forma reportada del objeto según los testigos)**
+
+Cabe aclarar que NO anticipará cuándo o dónde ocurrirá un avistamiento; No identifica visualmente el objeto ni verifica qué era realmente.
 
 ---
 
@@ -176,7 +182,7 @@ Cada fila representa un avistamiento informado, acompañado de múltiples atribu
 
 Resultado del proceso de limpieza, transformación y preparación de los datos, con el objetivo de obtener un conjunto de datos consistente y adecuado para el desarrollo de modelos de Aprendizaje Automático.
 
-Después del preprocesamiento, el dataset cuenta con 111.753 filas (instancias) y 29 columnas adicionales, generadas principalmente mediante la transformación de variables numéricas en categóricas y la creación de nuevas características derivadas.
+Después del preprocesamiento, el dataset cuenta con 111.753 filas (instancias) y 28 columnas adicionales, generadas principalmente mediante la transformación de variables numéricas en categóricas y la creación de nuevas características derivadas.
 
 Asimismo, se realizó un análisis de las variables disponibles para determinar su utilidad como predictoras. Se decidió excluir summary y details_url, mientras que la posible utilidad de date_posted se evaluará durante el desarrollo de los modelos.
 
