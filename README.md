@@ -126,7 +126,7 @@ Cada fila representa un avistamiento informado, acompañado de múltiples atribu
 
 # Diccionario de Variables del dataset original
 
-```
+
 | Nombre de la columna | Traducción al español | Descripción |
 |---|---|---|
 | `id` | Identificador | Identificador numérico único de cada reporte. |
@@ -139,11 +139,11 @@ Cada fila representa un avistamiento informado, acompañado de múltiples atribu
 | `details_url` | URL del reporte detallado | Dirección web que permite acceder al reporte original publicado en NUFORC. |
 | `posted_date` | Fecha de publicación | Fecha en la que el reporte fue publicado en NUFORC. |
 
-```
+
 
 # Diccionario de Variables del dataset pre-procesado
 
-```
+
 | Nombre de la columna | Traducción al español | Descripción |
 |---|---|---|
 | `id` | Identificador | Identificador numérico único de cada reporte. |
@@ -175,7 +175,7 @@ Cada fila representa un avistamiento informado, acompañado de múltiples atribu
 | `us_region` | Región de Estados Unidos | Región geográfica de Estados Unidos a la que pertenece el estado informado. |
 | `quarter_category` | Trimestre del año | Categoría que identifica el trimestre del año en el que ocurrió el avistamiento (primero, segundo, tercero o cuarto). |
 
-```
+
 ---
 
 ## ESTADO FINAL DEL DATASET DESPUÉS DEL PREPROCESAMIENTO
