@@ -242,6 +242,58 @@ Es una variable categórica nominal que constituye el objetivo de la clasificaci
 - **Información textual:** `summary` contiene descripciones de los testigos, no se tendrá en cuenta para los análisis.
 - **Fecha de publicación:** `posted_date` puede utilizarse para generar características temporales y evaluar su posible aporte al modelo.
 
+## 5. DICCIONARIO
+
+# Diccionario de Variables del dataset original
+
+
+| Nombre de la columna | Traducción al español | Descripción |
+|---|---|---|
+| `id` | Identificador | Identificador numérico único de cada reporte. |
+| `occurred_date_time` | Fecha y hora del avistamiento | Fecha y hora informadas en las que ocurrió el avistamiento. |
+| `city` | Ciudad | Ciudad asociada al lugar donde ocurrió el avistamiento. |
+| `state` | Estado o región | Estado o región administrativa donde se informó el avistamiento. |
+| `shape` | Forma reportada | Forma aparente del objeto descrita por el testigo. Es la variable objetivo del proyecto. |
+| `duration` | Duración | Tiempo de duración del avistamiento, expresado originalmente como texto. |
+| `summary` | Resumen | Resumen textual de la descripción proporcionada por el testigo. |
+| `details_url` | URL del reporte detallado | Dirección web que permite acceder al reporte original publicado en NUFORC. |
+| `posted_date` | Fecha de publicación | Fecha en la que el reporte fue publicado en NUFORC. |
+
+
+
+# Diccionario de Variables del dataset pre-procesado
+
+
+| Nombre de la columna | Traducción al español | Descripción |
+|---|---|---|
+| `id` | Identificador | Identificador numérico único de cada reporte. |
+| `occurred_date_time` | Fecha y hora del avistamiento | Fecha y hora originales informadas en las que ocurrió el avistamiento. |
+| `city` | Ciudad | Ciudad asociada al lugar del avistamiento. |
+| `state` | Estado o región | Estado o región administrativa donde se informó el avistamiento. |
+| `shape` | Forma reportada | Forma aparente del objeto descrita por el testigo. Es la variable objetivo original del proyecto. |
+| `duration` | Duración original | Tiempo de duración del avistamiento, expresado originalmente como texto. |
+| `summary` | Resumen | Resumen textual de la descripción proporcionada por el testigo. |
+| `details_url` | URL del reporte detallado | Dirección web que permite acceder al reporte original de NUFORC. |
+| `posted_date` | Fecha de publicación | Fecha en la que el reporte fue publicado en NUFORC. |
+| `year` | Año | Año en el que ocurrió el avistamiento, extraído de la fecha original. |
+| `state_grouped` | Estado agrupado | Variable que agrupa los estados según un criterio de agrupación geográfica o de frecuencia. |
+| `duration_seconds` | Duración en segundos | Duración del avistamiento convertida a un valor numérico expresado en segundos. |
+| `duration_seconds_isna` | Indicador de duración ausente | Variable indicadora que identifica los registros en los que la duración en segundos está ausente (NaN). |
+| `month` | Mes | Número del mes en el que ocurrió el avistamiento. |
+| `hour` | Hora | Hora del día en la que ocurrió el avistamiento. |
+| `day_of_week` | Día de la semana | Día de la semana en el que ocurrió el avistamiento. |
+| `occurred_datetime` | Fecha y hora normalizadas | Variable que representa la fecha y hora del avistamiento en formato datetime para facilitar su procesamiento. |
+| `month_category` | Categoría del mes | Variable categórica que representa el mes del año en el que ocurrió el avistamiento. |
+| `north_season` | Estación del año (hemisferio norte) | Estación del año correspondiente a la fecha del avistamiento, calculada según las estaciones del hemisferio norte. |
+| `day_category` | Categoría del día | Clasificación temporal del día según un criterio definido durante el preprocesamiento. |
+| `Duracion_clasificacion` | Clasificación de la duración | Variable categórica que agrupa los avistamientos según su duración. |
+| `time_of_day` | Franja horaria | Clasificación del horario del avistamiento en franjas del día, por ejemplo, mañana, tarde, noche o madrugada. |
+| `is_weekend` | Es fin de semana | Variable booleana que indica si el avistamiento ocurrió durante un sábado o domingo. |
+| `shape_grouped` | Forma agrupada | Variable que agrupa las categorías originales de `shape` según criterios definidos para el problema de clasificación. |
+| `decade` | Década | Década correspondiente al año en el que ocurrió el avistamiento. |
+| `duration_category_detailed` | Categoría detallada de duración | Clasificación de la duración del avistamiento en intervalos más específicos. |
+| `us_region` | Región de Estados Unidos | Región geográfica de Estados Unidos a la que pertenece el estado informado. |
+| `quarter_category` | Trimestre del año | Categoría que identifica el trimestre del año en el que ocurrió el avistamiento (primero, segundo, tercero o cuarto). |
 
 ## 6. Consideraciones sobre el dataset
 
@@ -253,6 +305,39 @@ que se apliquen se documentarán en las etapas posteriores del
 proyecto, sin confundir esta descripción del origen y la composición del
 dataset con el informe completo del análisis exploratorio o del
 preprocesamiento.
+
+El notebook con los datos limpios para comenzar a modelar es: 02_Datos_Limpios_y_Preparados.ipynb
+
+## 7. Características Generales
+
+En la carga inicial del archivo `clean_ufo_data.csv`, el notebook
+registra las siguientes dimensiones:
+
+
+| Característica                 | Valor                     |
+|--------------------------------|---------------------------|
+| Cantidad de instancias (filas) | 120.785                   |
+| Variables (columnas)           | 9                         |
+| Unidad de análisis             | Un avistamiento reportado |
+| Formato                        | CSV                       |
+| Tipo de problema               | Clasificación Multiclase  | Aprendizaje Supervisado | 
+
+---
+
+# Dataset Final
+
+El dataset final fue construido mediante la integración de las columnas.
+
+Cada fila representa un avistamiento informado, acompañado de múltiples atributos que describen aspectos propios del evento.
+
+| Característica                 | Valor                     |
+|--------------------------------|---------------------------|
+| Cantidad de instancias (filas) | 111.741                   |
+| Variables unificadas(columnas) | 27                        |
+| Unidad de análisis             | Un avistamiento reportado |
+| Formato                        | CSV                       |
+| Tipo de problema               | Clasificación Multiclase  | Aprendizaje Supervisado | 
+
 
 ### Importante:
 

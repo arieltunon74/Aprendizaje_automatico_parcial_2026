@@ -56,6 +56,52 @@ Se utilizarán como variables predictoras todas las variables disponibles en el 
 `posted_date` se conservará inicialmente para evaluar su posible utilidad en el desarrollo del modelo, es decir que su inclusión como variable predictora dependerá de los resultados del análisis exploratorio y de su relevancia para el objetivo de clasificación.
 Las fechas están representadas como texto y podrían convertirse a un tipo temporal.
 
+---
+
+## ESTADO FINAL DEL DATASET DESPUÉS DEL PREPROCESAMIENTO
+
+Resultado del proceso de limpieza, transformación y preparación de los datos, con el objetivo de obtener un conjunto de datos consistente y adecuado para el desarrollo de modelos de Aprendizaje Automático.
+
+Después del preprocesamiento, el dataset principal cuenta con 111.741 filas (instancias) y 28 columnas adicionales, generadas principalmente mediante la transformación de variables numéricas en categóricas y la creación de nuevas características derivadas.
+
+Filtrando haciendo foco de las observaciones en Estados Unidos, el dataset considera  99,202 filas
+
+Sin embargo  aplicó un filtrado en los avistamientos Ligth y Unknown por no tener una forma de objeto definida para clasificar, considerando el dataset 62,273 filas y 27 columnas adicionales luego de este filtrado.
+
+Asimismo, se realizó un análisis de las variables disponibles para determinar su utilidad como predictoras. Se decidió excluir summary y details_url, mientras que la posible utilidad de date_posted se evaluará durante el desarrollo de los modelos.
+
+Se descartaron las categorías light, other y unknown por considerarse poco específicas o ambiguas. Asimismo, se eliminaron las categorías delta, crescent, round, diamond, hexagon, flare, dome y pyramid debido a su baja frecuencia de aparición en el conjunto de datos, con el objetivo de reducir la cantidad de clases y facilitar el proceso de clasificación multiclase.
+
+En caso necesario, luego se retomará el análisis de las categorías light, other y unknown por tener muchas frecuencias.
+
+También se contempló el tratamiento de variables temporales y geográficas. A partir de occurred_date_time, se podrán obtener características como año, mes, día, hora, día de la semana y estación del año. Para la variable state, se podrán realizar agrupaciones geográficas o generar nuevas características que permitan representar mejor la ubicación de los avistamientos.
+
+Por otra parte, se evaluó la distribución de las categorías de la variable objetivo shape, con el propósito de identificar las categorías adecuadas para el problema de clasificación multiclase y definir su tratamiento según su frecuencia y representatividad.
+
+El resultado es un conjunto de datos preparado para continuar con el análisis exploratorio, la selección de características y la implementación y evaluación de diferentes algoritmos de clasificación multiclase.
+
+---
+
+# Metodología
+
+El proyecto fue desarrollado siguiendo las etapas clásicas de un flujo de trabajo de Ciencia de Datos:
+
+1. Obtención de datos.
+2. Limpieza y preparación.
+3. Integración de datasets.
+4. Construcción de variables derivadas unificando datos.
+5. Análisis exploratorio de datos.
+
+   En progreso...
+
+---
+
+# Modelos Utilizados
+
+En progreso...
+
+---
+
 ## Modelos de aprendizaje automático supervisados que podría utilizar: 
 
 **Regresión Logística Multiclase o Multinomial**: para predecir la forma del OVNI (shape), 

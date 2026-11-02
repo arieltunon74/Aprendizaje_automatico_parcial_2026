@@ -9,11 +9,13 @@
 
 Este repositorio contiene el proyecto que tiene como objetivo desarrollar un modelo de aprendizaje automático supervisado capáz de clasificar los reportes de avistamientos de UFO/UAP (OVNIS, objetos voladores no identificados) según la forma (shape) con la que los testigos describieron dichos objetos observados.
 
+Este proyecto utiliza el conjunto de datos **NUFORC UFO Sightings**, una recopilación de reportes de avistamientos de objetos voladores no
+identificados (UFO / OVNIs).
+
 Para ello, se identificarán y analizarán características temporales, geográficas y de duración para poder detectar posibles patrones de relaciones, regularidades o características que el modelo puede aprender a partir de los datos para intentar predecir la forma reportada en los avistamientos registrados en los Estados Unidos de América.
 
-La variable objetivo del modelo será shape, es decir, la forma con la que los testigos describieron al objeto volador no identificado, mientras que las demás características disponibles se emplearán como variables predictoras para evaluar la capacidad de los algoritmos de aprendizaje automático para identificar patrones y estimar la categoría correspondiente a cada avistamiento.
-
-El modelo intentará predecir la categoría de forma de un reporte, pero cabe aclarar que sno anticipará cuándo o dónde ocurrirá un avistamiento.
+El modelo intentará predecir la categoría de forma de un reporte OVNI, pero cabe aclarar que no anticipará cuándo o dónde ocurrirá un avistamiento.
+El modelo NO busca determinar la existencia de vida extraterrestre ni comprobar la naturaleza de los objetos observados.
 
 ---
 
@@ -21,7 +23,7 @@ El modelo intentará predecir la categoría de forma de un reporte, pero cabe ac
 
 ## Clasificación supervisada multiclase
 
-## Problema planteado para resolver con un modelo de aprendizaje automático 
+## Problema planteado para resolver con un modelo de aprendizaje automático: 
 
 ¿Es posible predecir con precisión la forma de un objeto volador no identificado a partir de las 
 características temporales, geográficas, de duración de los avistamientos? 
@@ -36,30 +38,9 @@ Predicción: el modelo estima cuál es la categoría más probable según los pa
 
 **Variable objetivo: shape (forma reportada del objeto según los testigos)**
 
+**shape** es la forma con la que los testigos describieron al objeto volador no identificado, mientras que las demás características disponibles se emplearán como variables predictoras para evaluar la capacidad de los algoritmos de aprendizaje automático para intentar identificar patrones y estimar la categoría correspondiente a cada avistamiento reportado.
+
 Cabe aclarar que NO anticipará cuándo o dónde ocurrirá un avistamiento; No identifica visualmente el objeto ni verifica qué era realmente.
-
----
-
-# Objetivos Específicos
-
-- Explorar y comprender el dataset de avistamientos identificando sus variables y tipos de datos. 
-- Realizar una limpieza y transformación de los datos, tratando valores duplicados, ausentes y preparando las variables categóricas y numéricas.
-- Analizar las características de los avistamientos, considerando variables como fecha, hora, ubicación, duración y forma reportada.
-- Determinar las variables que pueden utilizarse como características (features) para realizar la clasificación.
-- Construir diferentes modelos de clasificación y comparar su comportamiento mediante métricas apropiadas. 
-- Evaluar la capacidad predictiva de los modelos de aprendizaje supervisado utilizando datos de entrenamiento y prueba.
-- Analizar la importancia de las variables predictoras e identificar cuáles aportan en mayor medida a las predicciones realizadas por los modelos.
-
----
-
-## Alcance del proyecto
-
-El proyecto se centra en el análisis de datos de avistamientos de objetos voladores no identificados (UFO), utilizando el dataset NUFORC como fuente de información, con el propósito de evaluar la capacidad de distintos algoritmos de Aprendizaje Automático supervisado para clasificar la forma reportada de los objetos.
-
-Importante:
-
-Este análisis NO busca determinar la existencia de vida extraterrestre ni comprobar la naturaleza de los objetos observados.
-El modelo estaría aprendiendo a partir de reportes humanos registrados en NUFORC, no estaría identificando científicamente qué objetos son realmente OVNIS/ UFO/ UAP. 
 
 ---
 
@@ -96,129 +77,6 @@ La información geográfica también se detalla, con campos que indican la ciuda
  UAP (Unidentified Anomalous Phenomena): Fenómenos Anómalos No Identificados. Es un término más amplio que incluye observaciones inexplicables en el aire, el espacio, el mar o entre distintos medios. Anteriormente, UAP también se utilizaba para Unidentified Aerial Phenomena (Fenómenos Aéreos No Identificados). 
 
 **Importante**: que algo sea un UFO / OVNI o UAP no significa que sea de origen extraterrestre. Puede tratarse de aviones, drones, globos, fenómenos atmosféricos u objetos cuya naturaleza todavía se desconoce. Por lo tanto, el objetivo no es determinar si un avistamiento corresponde realmente a una nave extraterrestre, sino analizar los patrones existentes en los reportes registrados por los testigos y que fueron recolectados en la base de datos de NUFORC para luego utilizar modelos de Aprendizaje Automático para intentar predecir la categoría de forma informada en un nuevo registro. 
-
-
----
-
-## Características Generales
-
-En la carga inicial del archivo `clean_ufo_data.csv`, el notebook
-registra las siguientes dimensiones:
-
-
-| Característica                 | Valor                     |
-|--------------------------------|---------------------------|
-| Cantidad de instancias (filas) | 120.785                   |
-| Variables (columnas)           | 9                         |
-| Unidad de análisis             | Un avistamiento reportado |
-| Formato                        | CSV                       |
-| Tipo de problema               | Clasificación Multiclase  | Aprendizaje Supervisado | 
-
----
-
-# Dataset Final
-
-El dataset final fue construido mediante la integración de las columnas...
-
-Cada fila representa un avistamiento informado, acompañado de múltiples atributos que describen aspectos propios del evento. 
-
----
-
-# Diccionario de Variables del dataset original
-
-
-| Nombre de la columna | Traducción al español | Descripción |
-|---|---|---|
-| `id` | Identificador | Identificador numérico único de cada reporte. |
-| `occurred_date_time` | Fecha y hora del avistamiento | Fecha y hora informadas en las que ocurrió el avistamiento. |
-| `city` | Ciudad | Ciudad asociada al lugar donde ocurrió el avistamiento. |
-| `state` | Estado o región | Estado o región administrativa donde se informó el avistamiento. |
-| `shape` | Forma reportada | Forma aparente del objeto descrita por el testigo. Es la variable objetivo del proyecto. |
-| `duration` | Duración | Tiempo de duración del avistamiento, expresado originalmente como texto. |
-| `summary` | Resumen | Resumen textual de la descripción proporcionada por el testigo. |
-| `details_url` | URL del reporte detallado | Dirección web que permite acceder al reporte original publicado en NUFORC. |
-| `posted_date` | Fecha de publicación | Fecha en la que el reporte fue publicado en NUFORC. |
-
-
-
-# Diccionario de Variables del dataset pre-procesado
-
-
-| Nombre de la columna | Traducción al español | Descripción |
-|---|---|---|
-| `id` | Identificador | Identificador numérico único de cada reporte. |
-| `occurred_date_time` | Fecha y hora del avistamiento | Fecha y hora originales informadas en las que ocurrió el avistamiento. |
-| `city` | Ciudad | Ciudad asociada al lugar del avistamiento. |
-| `state` | Estado o región | Estado o región administrativa donde se informó el avistamiento. |
-| `shape` | Forma reportada | Forma aparente del objeto descrita por el testigo. Es la variable objetivo original del proyecto. |
-| `duration` | Duración original | Tiempo de duración del avistamiento, expresado originalmente como texto. |
-| `summary` | Resumen | Resumen textual de la descripción proporcionada por el testigo. |
-| `details_url` | URL del reporte detallado | Dirección web que permite acceder al reporte original de NUFORC. |
-| `posted_date` | Fecha de publicación | Fecha en la que el reporte fue publicado en NUFORC. |
-| `year` | Año | Año en el que ocurrió el avistamiento, extraído de la fecha original. |
-| `state_grouped` | Estado agrupado | Variable que agrupa los estados según un criterio de agrupación geográfica o de frecuencia. |
-| `duration_seconds` | Duración en segundos | Duración del avistamiento convertida a un valor numérico expresado en segundos. |
-| `duration_seconds_isna` | Indicador de duración ausente | Variable indicadora que identifica los registros en los que la duración en segundos está ausente (NaN). |
-| `month` | Mes | Número del mes en el que ocurrió el avistamiento. |
-| `hour` | Hora | Hora del día en la que ocurrió el avistamiento. |
-| `day_of_week` | Día de la semana | Día de la semana en el que ocurrió el avistamiento. |
-| `occurred_datetime` | Fecha y hora normalizadas | Variable que representa la fecha y hora del avistamiento en formato datetime para facilitar su procesamiento. |
-| `month_category` | Categoría del mes | Variable categórica que representa el mes del año en el que ocurrió el avistamiento. |
-| `north_season` | Estación del año (hemisferio norte) | Estación del año correspondiente a la fecha del avistamiento, calculada según las estaciones del hemisferio norte. |
-| `day_category` | Categoría del día | Clasificación temporal del día según un criterio definido durante el preprocesamiento. |
-| `Duracion_clasificacion` | Clasificación de la duración | Variable categórica que agrupa los avistamientos según su duración. |
-| `time_of_day` | Franja horaria | Clasificación del horario del avistamiento en franjas del día, por ejemplo, mañana, tarde, noche o madrugada. |
-| `is_weekend` | Es fin de semana | Variable booleana que indica si el avistamiento ocurrió durante un sábado o domingo. |
-| `shape_grouped` | Forma agrupada | Variable que agrupa las categorías originales de `shape` según criterios definidos para el problema de clasificación. |
-| `decade` | Década | Década correspondiente al año en el que ocurrió el avistamiento. |
-| `duration_category_detailed` | Categoría detallada de duración | Clasificación de la duración del avistamiento en intervalos más específicos. |
-| `us_region` | Región de Estados Unidos | Región geográfica de Estados Unidos a la que pertenece el estado informado. |
-| `quarter_category` | Trimestre del año | Categoría que identifica el trimestre del año en el que ocurrió el avistamiento (primero, segundo, tercero o cuarto). |
-
-
----
-
-## ESTADO FINAL DEL DATASET DESPUÉS DEL PREPROCESAMIENTO
-
-Resultado del proceso de limpieza, transformación y preparación de los datos, con el objetivo de obtener un conjunto de datos consistente y adecuado para el desarrollo de modelos de Aprendizaje Automático.
-
-Después del preprocesamiento, el dataset principal cuenta con 111.741 filas (instancias) y 28 columnas adicionales, generadas principalmente mediante la transformación de variables numéricas en categóricas y la creación de nuevas características derivadas.
-
-Filtrando haciendo foco de las observaciones en Estados Unidos, el dataset considera  99,202 filas
-
-Sin embargo  aplicó un filtrado en los avistamientos Ligth y Unknown por no tener una forma de objeto definida para clasificar, considerando el dataset 62,273 filas y 27 columnas adicionales luego de este filtrado.
-
-Asimismo, se realizó un análisis de las variables disponibles para determinar su utilidad como predictoras. Se decidió excluir summary y details_url, mientras que la posible utilidad de date_posted se evaluará durante el desarrollo de los modelos.
-
-Se descartaron las categorías light, other y unknown por considerarse poco específicas o ambiguas. Asimismo, se eliminaron las categorías delta, crescent, round, diamond, hexagon, flare, dome y pyramid debido a su baja frecuencia de aparición en el conjunto de datos, con el objetivo de reducir la cantidad de clases y facilitar el proceso de clasificación multiclase.
-
-En caso necesario, luego se retomará el análisis de las categorías light, other y unknown por tener muchas frecuencias.
-
-También se contempló el tratamiento de variables temporales y geográficas. A partir de occurred_date_time, se podrán obtener características como año, mes, día, hora, día de la semana y estación del año. Para la variable state, se podrán realizar agrupaciones geográficas o generar nuevas características que permitan representar mejor la ubicación de los avistamientos.
-
-Por otra parte, se evaluó la distribución de las categorías de la variable objetivo shape, con el propósito de identificar las categorías adecuadas para el problema de clasificación multiclase y definir su tratamiento según su frecuencia y representatividad.
-
-El resultado es un conjunto de datos preparado para continuar con el análisis exploratorio, la selección de características y la implementación y evaluación de diferentes algoritmos de clasificación multiclase.
-
----
-
-# Metodología
-
-El proyecto fue desarrollado siguiendo las etapas clásicas de un flujo de trabajo de Ciencia de Datos:
-
-1. Obtención de datos.
-2. Limpieza y preparación.
-3. Integración de datasets.
-4. Construcción de variables derivadas unificando datos.
-5. Análisis exploratorio de datos.
-
-   En progreso...
-
----
-
-# Modelos Utilizados
-
-En progreso...
 
 ---
 
