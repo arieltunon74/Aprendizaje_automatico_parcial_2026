@@ -223,39 +223,38 @@ El repositorio se encuentra organizado siguiendo los principios de la plantilla 
 </a>
 
 ```
-PROYECTO_APRENDIZAJE_AUTOMATICO/
+│   Readme.md
+│   requirements.txt
 │
-├── README.md
-├── requirements.txt
-│
-├── data/
-│   ├── interim/
-│   │   └── Datos intermedios.txt
+├───data
+│   ├───interim
+│   │       Datos intermedios.txt
 │   │
-│   ├── processed/
-│   │   ├── A confirmar.txt
-│   │   └── dataset_procesado.csv
+│   ├───processed
+│   │       A confirmar.txt
+│   │       dataset_procesado.csv
 │   │
-│   └── raw/
-│       └── clean_ufo_data.csv
+│   └───raw
+│           clean_ufo_data.csv
 │
-├── docs/
-│   ├── 01_Objetivos_y_Alcance_del_Proyecto.md
-│   └── 02_Analisis_exploratorio.md
+├───docs
+│       01_Objetivos_y_Alcance_del_Proyecto.md
+│       02_Analisis_exploratorio.md
 │
-├── models/
-│   └── Pendiente.txt
+├───models
+│       Pendiente.txt
 │
-├── notebooks/
-│   ├── 01 - Preprocesamiento y Escalado/
-│   │   └── 01_Limpieza_y_Preprocesamiento_.ipynb
+├───notebooks
+│   ├───01 - Preprocesamiento y Escalado
+│   │       01_Limpieza_y_Preprocesamiento_.ipynb
+│   │       02_Datos_Limpios_y_Preparados_.ipynb
 │   │
-│   └── 02 - Modelos/
-│       └── Pendiente.txt
+│   └───02 - Modelos
+│           Pendiente.txt
 │
-└── reports/
-    └── figures/
-        └── Pendiente.txt
+└───reports
+    └───figures
+            Pendiente.txt
 
 ```
 ---
