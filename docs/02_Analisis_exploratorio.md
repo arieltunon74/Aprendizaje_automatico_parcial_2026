@@ -4,7 +4,7 @@
 
 Este proyecto utiliza el conjunto de datos **NUFORC UFO Sightings**, una
 recopilación de reportes de avistamientos de objetos voladores no
-identificados (UFO/OVNIs). El dataset contiene información sobre la
+identificados (UFO / OVNIs). El dataset contiene información sobre la
 fecha y hora del avistamiento, la ubicación informada, la forma descrita
 por el testigo, la duración estimada y el texto del reporte, entre otros
 campos.
@@ -46,8 +46,7 @@ registra las siguientes dimensiones:
 -   **Cantidad de variables (columnas):** 9.
 
 Estas cifras corresponden al dataset cargado inicialmente, antes de los
-filtros y las transformaciones posteriores realizados durante el
-trabajo.
+filtros y las transformaciones posteriores realizados durante el trabajo.
 
 ## 4. Variables disponibles originalmente
 
@@ -77,8 +76,9 @@ trabajo.
   `details_url`                       Dirección web del reporte detallado
                                       en NUFORC.
 
-  `posted_date`                       Fecha en la que se publicó el
-                                      reporte.
+  `posted_date`                       Fecha en la que se generó el reporte.    
+                                    
+
   -----------------------------------------------------------------------
 
 ## 5. Tipos de datos
@@ -111,9 +111,11 @@ trabajo.
   -----------------------------------------------------------------------
 
 En esta versión, `id` es la única columna reconocida como numérica
-(`int64`); las otras ocho columnas aparecen con tipo `object`. 
-Las fechas están representadas como texto y podrían convertirse a un tipo temporal
-pero EL PROCESAMIENTO DE DICHOS TEXTOS NO SERÁ TENIDO EN CUENTA dentro del alcance de este proyecto.
+(`int64`); las otras ocho columnas aparecen con tipo `object`.
+
+`posted_date` se conservará inicialmente para evaluar su posible utilidad en el desarrollo del modelo, es decir que su inclusión como variable predictora dependerá de los resultados del análisis exploratorio y de su relevancia para el objetivo de clasificación.
+Las fechas están representadas como texto y podrían convertirse a un tipo temporal.
+EL PROCESAMIENTO DE DICHOS TEXTOS NO SERÁ TENIDO EN CUENTA dentro del alcance de este proyecto.
 
 ---
 
@@ -126,16 +128,16 @@ pero EL PROCESAMIENTO DE DICHOS TEXTOS NO SERÁ TENIDO EN CUENTA dentro del alca
 ## Conteo de Valores Nulos
 
 A continuación se presenta la cantidad de valores nulos detectados en cada una de las columnas del dataset, ordenados de mayor a menor frecuencia:
-```
-| Columna | Valores Nulos |
-| :--- | :---: |
-| `state` | **8,714** |
-| `duration` | **4,372** |
-| `shape` | **4,098** |
-| `city` | **261** |
-| `occurred_date_time` | **61** |
-| `summary` | **37** |
-```
+
+| Columna              | Valores Nulos |
+| :--------------------| :-----------: |
+| `state`              | **8,714**     |
+| `duration`           | **4,372**     |
+| `shape`              | **4,098**     |
+| `city`               | **261**       |
+| `occurred_date_time` | **61**        |
+| `summary`            | **37**        |
+
 ---
 
 ## Estandarización de la Variable Objetivo (`shape`)
@@ -180,7 +182,7 @@ Traducciones al español y la terminología utilizada en el proyecto de Aprendiz
 
 
 | Nombre de la columna | Traducción al español | Descripción |
-|---|---|---|
+|----|---|---|
 | `id` | Identificador | Identificador numérico único del reporte. |
 | `occurred_date_time` | Fecha y hora del avistamiento | Fecha y hora informadas en las que ocurrió el avistamiento. |
 | `city` | Ciudad | Ciudad asociada al lugar del avistamiento. |
@@ -224,11 +226,13 @@ Es una variable categórica nominal que constituye el objetivo de la clasificaci
 
 ## 3. Glosario de términos
 
-| Término | Significado | Descripción |
-|---|---|---|
-| **Sighting** | Avistamiento | Observación visual de un objeto o fenómeno, generalmente realizada por uno o varios testigos. |
-| **UFO** | Unidentified Flying Object (Objeto Volador No Identificado - OVNI) | Término utilizado para describir un objeto observado en el cielo cuya identidad no ha podido determinarse. |
-| **UAP** | Unidentified Anomalous Phenomena (Fenómenos Anómalos No Identificados) | Término más amplio que UFO, utilizado para referirse a fenómenos anómalos que no han podido identificarse en diferentes entornos. |
+```
+| Término      | Significado | Descripción |
+|--------------|-------------|-------------|
+| **Sighting** | Avistamiento| Observación visual de un objeto o fenómeno, generalmente realizada por uno o varios testigos. |
+| **UFO**      | Unidentified Flying Object (Objeto Volador No Identificado - OVNI) | Término utilizado para describir un objeto observado en el cielo cuya identidad no ha podido determinarse. |
+| **UAP**      | Unidentified Anomalous Phenomena (Fenómenos Anómalos No Identificados) | Término más amplio que UFO, utilizado para referirse a fenómenos anómalos que no han podido identificarse en diferentes entornos. |
+```
 
 ## 4. Consideraciones sobre las variables
 
@@ -237,7 +241,6 @@ Es una variable categórica nominal que constituye el objetivo de la clasificaci
 - **Identificadores y referencias:** `id` y `details_url` se utilizan principalmente para identificar y consultar los registros, por lo que no se consideran inicialmente variables predictoras.
 - **Información textual:** `summary` contiene descripciones de los testigos, no se tendrá en cuenta para los análisis.
 - **Fecha de publicación:** `posted_date` puede utilizarse para generar características temporales y evaluar su posible aporte al modelo.
-
 
 
 ## 6. Consideraciones sobre el dataset

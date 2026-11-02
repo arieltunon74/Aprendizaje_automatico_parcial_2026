@@ -94,7 +94,6 @@ La información geográfica también se detalla, con campos que indican la ciuda
 
 ---
 
-
 ## Características Generales
 
 En la carga inicial del archivo `clean_ufo_data.csv`, el notebook
@@ -119,12 +118,73 @@ Cada fila representa un avistamiento informado, acompañado de múltiples atribu
 
 ---
 
-# Diccionario de Variables
+# Diccionario de Variables del dataset original
 
-| Variable | Descripción |
-|-----------|-------------|
+```
+| Nombre de la columna | Traducción al español | Descripción |
+|---|---|---|
+| `id` | Identificador | Identificador numérico único de cada reporte. |
+| `occurred_date_time` | Fecha y hora del avistamiento | Fecha y hora informadas en las que ocurrió el avistamiento. |
+| `city` | Ciudad | Ciudad asociada al lugar donde ocurrió el avistamiento. |
+| `state` | Estado o región | Estado o región administrativa donde se informó el avistamiento. |
+| `shape` | Forma reportada | Forma aparente del objeto descrita por el testigo. Es la variable objetivo del proyecto. |
+| `duration` | Duración | Tiempo de duración del avistamiento, expresado originalmente como texto. |
+| `summary` | Resumen | Resumen textual de la descripción proporcionada por el testigo. |
+| `details_url` | URL del reporte detallado | Dirección web que permite acceder al reporte original publicado en NUFORC. |
+| `posted_date` | Fecha de publicación | Fecha en la que el reporte fue publicado en NUFORC. |
 
+```
 
+# Diccionario de Variables del dataset pre-procesado
+
+```
+| Nombre de la columna | Traducción al español | Descripción |
+|---|---|---|
+| `id` | Identificador | Identificador numérico único de cada reporte. |
+| `occurred_date_time` | Fecha y hora del avistamiento | Fecha y hora originales informadas en las que ocurrió el avistamiento. |
+| `city` | Ciudad | Ciudad asociada al lugar del avistamiento. |
+| `state` | Estado o región | Estado o región administrativa donde se informó el avistamiento. |
+| `shape` | Forma reportada | Forma aparente del objeto descrita por el testigo. Es la variable objetivo original del proyecto. |
+| `duration` | Duración original | Tiempo de duración del avistamiento, expresado originalmente como texto. |
+| `summary` | Resumen | Resumen textual de la descripción proporcionada por el testigo. |
+| `details_url` | URL del reporte detallado | Dirección web que permite acceder al reporte original de NUFORC. |
+| `posted_date` | Fecha de publicación | Fecha en la que el reporte fue publicado en NUFORC. |
+| `year` | Año | Año en el que ocurrió el avistamiento, extraído de la fecha original. |
+| `state_grouped` | Estado agrupado | Variable que agrupa los estados según un criterio de agrupación geográfica o de frecuencia. |
+| `duration_seconds` | Duración en segundos | Duración del avistamiento convertida a un valor numérico expresado en segundos. |
+| `duration_seconds_isna` | Indicador de duración ausente | Variable indicadora que identifica los registros en los que la duración en segundos está ausente (NaN). |
+| `month` | Mes | Número del mes en el que ocurrió el avistamiento. |
+| `hour` | Hora | Hora del día en la que ocurrió el avistamiento. |
+| `day_of_week` | Día de la semana | Día de la semana en el que ocurrió el avistamiento. |
+| `occurred_datetime` | Fecha y hora normalizadas | Variable que representa la fecha y hora del avistamiento en formato datetime para facilitar su procesamiento. |
+| `month_category` | Categoría del mes | Variable categórica que representa el mes del año en el que ocurrió el avistamiento. |
+| `north_season` | Estación del año (hemisferio norte) | Estación del año correspondiente a la fecha del avistamiento, calculada según las estaciones del hemisferio norte. |
+| `day_category` | Categoría del día | Clasificación temporal del día según un criterio definido durante el preprocesamiento. |
+| `Duracion_clasificacion` | Clasificación de la duración | Variable categórica que agrupa los avistamientos según su duración. |
+| `time_of_day` | Franja horaria | Clasificación del horario del avistamiento en franjas del día, por ejemplo, mañana, tarde, noche o madrugada. |
+| `is_weekend` | Es fin de semana | Variable booleana que indica si el avistamiento ocurrió durante un sábado o domingo. |
+| `shape_grouped` | Forma agrupada | Variable que agrupa las categorías originales de `shape` según criterios definidos para el problema de clasificación. |
+| `decade` | Década | Década correspondiente al año en el que ocurrió el avistamiento. |
+| `duration_category_detailed` | Categoría detallada de duración | Clasificación de la duración del avistamiento en intervalos más específicos. |
+| `us_region` | Región de Estados Unidos | Región geográfica de Estados Unidos a la que pertenece el estado informado. |
+| `quarter_category` | Trimestre del año | Categoría que identifica el trimestre del año en el que ocurrió el avistamiento (primero, segundo, tercero o cuarto). |
+
+```
+---
+
+## ESTADO FINAL DEL DATASET DESPUÉS DEL PREPROCESAMIENTO
+
+Resultado del proceso de limpieza, transformación y preparación de los datos, con el objetivo de obtener un conjunto de datos consistente y adecuado para el desarrollo de modelos de Aprendizaje Automático.
+
+Después del preprocesamiento, el dataset cuenta con 111.753 filas (instancias) y 29 columnas adicionales, generadas principalmente mediante la transformación de variables numéricas en categóricas y la creación de nuevas características derivadas.
+
+Asimismo, se realizó un análisis de las variables disponibles para determinar su utilidad como predictoras. Se decidió excluir summary y details_url, mientras que la posible utilidad de date_posted se evaluará durante el desarrollo de los modelos.
+
+También se contempló el tratamiento de variables temporales y geográficas. A partir de occurred_date_time, se podrán obtener características como año, mes, día, hora, día de la semana y estación del año. Para la variable state, se podrán realizar agrupaciones geográficas o generar nuevas características que permitan representar mejor la ubicación de los avistamientos.
+
+Por otra parte, se evaluó la distribución de las categorías de la variable objetivo shape, con el propósito de identificar las categorías adecuadas para el problema de clasificación multiclase y definir su tratamiento según su frecuencia y representatividad.
+
+El resultado es un conjunto de datos preparado para continuar con el análisis exploratorio, la selección de características y la implementación y evaluación de diferentes algoritmos de clasificación multiclase.
 
 ---
 
@@ -163,29 +223,33 @@ PROYECTO_APRENDIZAJE_AUTOMATICO/
 ├── requirements.txt
 │
 ├── data/
-│   ├── raw/
-│   │   └── clean_ufo_data.csv
 │   ├── interim/
+│   │   └── Datos intermedios.txt
+│   │
+│   ├── processed/
+│   │   ├── A confirmar.txt
 │   │   └── dataset_procesado.csv
-│   └── processed/
+│   │
+│   └── raw/
+│       └── clean_ufo_data.csv
 │
 ├── docs/
 │   ├── 01_Objetivos_y_Alcance_del_Proyecto.md
 │   └── 02_Analisis_exploratorio.md
 │
 ├── models/
-│   └── .gitkeep
+│   └── Pendiente.txt
 │
 ├── notebooks/
-│   ├── .gitkeep
 │   ├── 01 - Preprocesamiento y Escalado/
 │   │   └── 01_Limpieza_y_Preprocesamiento_.ipynb
+│   │
 │   └── 02 - Modelos/
+│       └── Pendiente.txt
 │
 └── reports/
-    ├── .gitkeep
     └── figures/
-        └── .gitkeep
+        └── Pendiente.txt
 
 ```
 ---
