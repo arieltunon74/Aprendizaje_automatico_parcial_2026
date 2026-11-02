@@ -56,7 +56,7 @@ Se utilizarán como variables predictoras todas las variables disponibles en el 
 `posted_date` se conservará inicialmente para evaluar su posible utilidad en el desarrollo del modelo, es decir que su inclusión como variable predictora dependerá de los resultados del análisis exploratorio y de su relevancia para el objetivo de clasificación.
 Las fechas están representadas como texto y podrían convertirse a un tipo temporal.
 
-## Modelos de aprendizaje automático supervisados que podría utilizar 
+## Modelos de aprendizaje automático supervisados que podría utilizar: 
 
 **Regresión Logística Multiclase o Multinomial**: para predecir la forma del OVNI (shape), 
 permitiendo evaluar la probabilidad de pertenencia a cada clase e interpretar mediante sus 

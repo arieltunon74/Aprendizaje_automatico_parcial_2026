@@ -182,11 +182,11 @@ Cada fila representa un avistamiento informado, acompañado de múltiples atribu
 
 Resultado del proceso de limpieza, transformación y preparación de los datos, con el objetivo de obtener un conjunto de datos consistente y adecuado para el desarrollo de modelos de Aprendizaje Automático.
 
-Después del preprocesamiento, el dataset principal cuenta con 111.753 filas (instancias) y 28 columnas adicionales, generadas principalmente mediante la transformación de variables numéricas en categóricas y la creación de nuevas características derivadas.
+Después del preprocesamiento, el dataset principal cuenta con 111.741 filas (instancias) y 28 columnas adicionales, generadas principalmente mediante la transformación de variables numéricas en categóricas y la creación de nuevas características derivadas.
 
-Filtrando haciendo foco de las observaciones en Estados Unidos, el dataset considera  99,209 filas.
+Filtrando haciendo foco de las observaciones en Estados Unidos, el dataset considera  99,202 filas
 
-Sin embargo  aplicó un filtrado en los avistamientos Ligth y Unknown por no tener una forma de objeto definida para clasificar, considerando el dataset 62,273 filas luego de este filtrado.
+Sin embargo  aplicó un filtrado en los avistamientos Ligth y Unknown por no tener una forma de objeto definida para clasificar, considerando el dataset 62,273 filas y 27 columnas adicionales luego de este filtrado.
 
 Asimismo, se realizó un análisis de las variables disponibles para determinar su utilidad como predictoras. Se decidió excluir summary y details_url, mientras que la posible utilidad de date_posted se evaluará durante el desarrollo de los modelos.
 
@@ -209,7 +209,7 @@ El proyecto fue desarrollado siguiendo las etapas clásicas de un flujo de traba
 1. Obtención de datos.
 2. Limpieza y preparación.
 3. Integración de datasets.
-4. Construcción de variables derivadas.
+4. Construcción de variables derivadas unificando datos.
 5. Análisis exploratorio de datos.
 
    En progreso...

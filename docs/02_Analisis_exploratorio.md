@@ -258,13 +258,15 @@ preprocesamiento.
 
 Por el momento:
 
-Filtrando haciendo foco de las observaciones en Estados Unidos, el dataset considera  99,209 filas.
+Filtrando haciendo foco de las observaciones solamente en los Estados Unidos de América, el dataset considera  99,202 filas.
 
-Sin embargo  aplicó un filtrado en los avistamientos Ligth y Unknown por no tener una forma de objeto definida para clasificar, considerando el dataset 62,273 filas luego de este filtrado.
+Sin embargo  aplicó un filtrado en los avistamientos Ligth y Unknown por no tener una forma de objeto definida para clasificar, considerando el dataset 62,270 filas luego de este filtrado.
 
 Asimismo, se realizó un análisis de las variables disponibles para determinar su utilidad como predictoras. Se decidió excluir summary y details_url, mientras que la posible utilidad de date_posted se evaluará durante el desarrollo de los modelos.
 
-Se descartaron las categorías light, other y unknown por considerarse poco específicas o ambiguas. Asimismo, se eliminaron las categorías delta, crescent, round, diamond, hexagon, flare, dome y pyramid debido a su baja frecuencia de aparición en el conjunto de datos, con el objetivo de reducir la cantidad de clases y facilitar el proceso de clasificación multiclase.
+Se descartaron por el momento las categorías light, other y unknown por considerarse poco específicas o ambiguas. 
+
+Asimismo, se eliminaron las categorías delta, crescent, round, diamond, hexagon, flare, dome y pyramid debido a su baja frecuencia de aparición en el conjunto de datos, con el objetivo de reducir la cantidad de clases y facilitar el proceso de clasificación multiclase.
 
 En caso necesario, luego se retomará el análisis de las categorías light, other y unknown por tener muchas frecuencias.
 
