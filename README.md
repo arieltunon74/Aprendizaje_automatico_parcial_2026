@@ -1,71 +1,75 @@
-# PROYECTO DE APRENDIZAJE AUTOMÁTICO
-
 # Clasificación de la forma reportada en avistamientos de OVNIS en Estados Unidos mediante aprendizaje automático
+---
 
-## Autor: Ariel Tuñón
-## Institución: Centro Politécnico Superior Malvinas Argentinas  
+![Imagen de portada](reports/OVNI.jpg)
+ 
+ ## Índice
 
-## Descripción
-
-Este repositorio contiene el proyecto que tiene como objetivo desarrollar un modelo de aprendizaje automático supervisado capáz de clasificar los reportes de avistamientos de UFO/UAP (OVNIS, objetos voladores no identificados) según la forma (shape) con la que los testigos describieron dichos objetos observados.
-
-Este proyecto utiliza el conjunto de datos **NUFORC UFO Sightings**, una recopilación de reportes de avistamientos de objetos voladores no
-identificados (UFO / OVNIs).
-
-Para ello, se identificarán y analizarán características temporales, geográficas y de duración para poder detectar posibles patrones de relaciones, regularidades o características que el modelo puede aprender a partir de los datos para intentar predecir la forma reportada en los avistamientos registrados en los Estados Unidos de América.
-
-El modelo intentará predecir la categoría de forma de un reporte OVNI, pero cabe aclarar que no anticipará cuándo o dónde ocurrirá un avistamiento.
-El modelo NO busca determinar la existencia de vida extraterrestre ni comprobar la naturaleza de los objetos observados.
+- [1. Descripción del Proyecto](#descripción-del-proyecto)
+- [2. Relevancia del problema](#relevancia-del-problema)
+- [3. Pregunta e Hipótesis](#relevancia-del-problema)
+  - [3.1. Pregunta de Investigación e Hipótesis](#pregunta-de-investigación-e-hipótesis)
+- [4. Tipo de Problema](#4-tipo-de-problema)
+- [5. Objetivo General](#objetivo-general)
+ - [5.1. Objetivos Especificos](#objetivos-específicos)
+- [6. Fuente de los Datos](#fuente-de-los-datos)
+ - [6.1. Acerca de la fuente de información](#acerca-de-la-fuente-de-información)
+- [7. Organización del proyecto](#organización-del-proyecto)
+- [8. Conclusiones Generales](#6-conclusiones-generales)
+- [9. Mejor modelo seleccionado](#7-Mejor-Modelo-Seleccionado)
+- [10. proyectos a futuro](#8-Aporte-a-Tierra-del-Fuego)
+- 📘 [10. Notebooks del Proyecto](#9-notebooks-del-proyecto)
+- 📄 [11. Informes Tecnicos del Proyecto](#10-informes-tecnicos-del-proyecto)
+- 🎥 [12. Video Presentacion del Proyecto](#11-video-presentacion-del-proyecto)
 
 ---
 
-# Tipo de problema
+## Descripción del proyecto
 
-## Clasificación supervisada multiclase
+Este proyecto que tiene como objetivo desarrollar un modelo de aprendizaje automático supervisado capáz de clasificar los reportes de avistamientos de UFO/UAP (OVNIS, objetos voladores no identificados) según la forma con la que los testigos describieron dichos objetos observados.
 
-## Problema planteado para resolver con un modelo de aprendizaje automático: 
+---
+
+## Relevancia del problema
+
+Este proyecto utiliza el conjunto de datos **NUFORC UFO Sightings**, una recopilación de reportes de avistamientos de objetos voladores no identificados (OVNIs) registrados por testigos. A partir de su análisis, se estudiarán las características temporales, geográficas y de duración de los avistamientos ocurridos en los Estados Unidos de América. 
+El modelo intentará predecir la categoría de forma de un reporte OVNI, pero cabe aclarar que no anticipará cuándo o dónde ocurrirá un avistamiento.
+El modelo NO busca determinar la existencia de vida extraterrestre ni comprobar la naturaleza de los objetos observados.
+
+### Pregunta de Investigación e Hipótesis
 
 ¿Es posible predecir con precisión la forma de un objeto volador no identificado a partir de las 
-características temporales, geográficas, de duración de los avistamientos? 
+características temporales, geográficas, de duración de los avistamientos?
 
-# Objetivo General
+## Tipo de problema
 
-Intentar clasificar la categoría de la forma de un reporte mediante la aplicación de técnicas de Aprendizaje Automático supervisado mediante clasificación multiclase.
-Se busca identificar patrones y evaluar la capacidad de los modelos de aprendizaje automático para predecir la forma reportada del objeto (shape) según las características disponibles.
+Clasificación supervisada multiclase
 
-Clasificación: el modelo asigna una categoría
-Predicción: el modelo estima cuál es la categoría más probable según los patrones aprendidos
+## Objetivo General
 
-**Variable objetivo: shape (forma reportada del objeto según los testigos)**
+Intentar clasificar la categoría de la forma de un reporte mediante la aplicación de técnicas de Aprendizaje Automático supervisado mediante clasificación multiclase. Se busca identificar patrones y evaluar la capacidad de los modelos para predecir la forma reportada del objeto (shape) según las características disponibles.
 
-**shape** es la forma con la que los testigos describieron al objeto volador no identificado, mientras que las demás características disponibles se emplearán como variables predictoras para evaluar la capacidad de los algoritmos de aprendizaje automático para intentar identificar patrones y estimar la categoría correspondiente a cada avistamiento reportado.
+### Objetivos específicos
 
+Se buscará desarrollar modelos de aprendizaje automático que permitan predecir la forma reportada por los testigos en dichos avistamientos, a partir de las características disponibles en el conjunto de datos. 
+**Clasificación**: el modelo asigna una categoría
+**Predicción**: el modelo estima cuál es la categoría más probable según los patrones aprendidos
+**Variable objetivo: shape** Es la forma con la que los testigos describieron al objeto volador no identificado, mientras que las demás características disponibles se emplearán como variables predictoras para evaluar la capacidad de los algoritmos de aprendizaje automático para intentar identificar patrones y estimar la categoría correspondiente a cada avistamiento reportado.
 Cabe aclarar que NO anticipará cuándo o dónde ocurrirá un avistamiento; No identifica visualmente el objeto ni verifica qué era realmente.
 
 ---
 
-# Fuente de los Datos
+## Fuente de los Datos
 
-Los datos utilizados provienen de la siguiente organización:
-
-NUFORC (National UFO Reporting Center o Centro Nacional de Informes de Ovnis) 
-
+Los datos utilizados provienen de la organización NUFORC (National UFO Reporting Center o Centro Nacional de Informes de Ovnis) 
 Es una organización privada y sin fines de lucro en el estado de Washington, Estados Unidos, dedicada a recibir, registrar, analizar y difundir públicamente reportes de avistamientos de UFO/OVNIS y UAP (Fenómenos Aéreos No Identificados). Fue creada en el año 1974 y lleva operando más de 50 años como un punto central de recepción de testimonios.
 Web Site: https://nuforc.org/ 
 
-La fuente se encuentra en idioma inglés de origen, por lo que los nombres de las columnas, las categorías y las descripciones de los avistamientos están expresados en dicho idioma.
-
-Existen datasets derivados de estos registros de NUFORC que contienen más de 120.000 observaciones, con variables como datetime, city, state, country, shape, duration, comments, latitude y longitude. El dataset primario utilizado para este proyecto se extrae del siguiente repositorio: 
-
-https://www.kaggle.com/datasets/thaddeussegura/ufo-sightings
+La fuente se encuentra en idioma inglés de origen, por lo que los nombres de las columnas, las categorías y las descripciones de los avistamientos están expresados en dicho idioma. Existen datasets derivados de estos registros de NUFORC que contienen más de 120.000 observaciones, con variables como datetime, city, state, country, shape, duration, comments, latitude y longitude. El dataset primario utilizado para este proyecto se extrae del siguiente repositorio: https://www.kaggle.com/datasets/thaddeussegura/ufo-sightings
 
 Data scraped from the National UFO reporting center – By Thaddeus Segura - (DbCL) v1.0 
 
-**clean\_ufo\_data.csv (23.34 MB)**
-
----
-
-# Acerca de la fuente de información:
+### Acerca de la fuente de información:
 
 Cada entrada en la base de datos de NUFORC es un avistamiento informado, acompañado de múltiples atributos que describen aspectos propios del evento. Entre estos atributos se encuentran marcadores temporales como fecha de publicación y la fecha y hora exactas en que ocurrió el avistamiento. Esto permite realizar análisis cronológicos para identificar patrones o tendencias basados en períodos de mayor o menor actividad. 
 La información geográfica también se detalla, con campos que indican la ciudad, el estado o provincia de EEUU y también de otras partes del mundo (en blanco).
@@ -123,9 +127,7 @@ El repositorio se encuentra organizado siguiendo los principios de la plantilla 
             Pendiente.txt
 
 ```
----
-
-# Tecnologías Utilizadas
+Tecnologías Utilizadas
 
 - Python
 - Pandas
@@ -143,3 +145,22 @@ El repositorio se encuentra organizado siguiendo los principios de la plantilla 
 
 En progreso...
 
+## 9. Notebooks del Proyecto
+
+- 📘 [`EDA_TEA_INFANCIA.ipynb`](notebooks/EDA_TEA_INFANCIA.ipynb)
+- 📘 [`Modelos_Predictivos_TEA.ipynb`](notebooks/Modelos_Predictivos_TEA.ipynb)
+- 📘 [`Validacion_Optimizacion_Metricas_TEA.ipynb`](notebooks/Validacion_Optimizacion_Metricas_TEA.ipynb)
+
+## 10. Informes Tecnicos del Proyecto
+
+- 📄 [`Descripcion_Dataset_Original.pdf`](reports/Descripcion_Dataset_Original.pdf)
+- 📄 [`Descripcion_Dataset_Procesado.pdf`](reports/Descripcion_Dataset_Procesado.pdf)
+- 📄 [`Conclusiones.pdf`](reports/Conclusiones.pdf)
+
+## 11. Video Presentacion del Proyecto
+
+Podés acceder al video de presentación en el siguiente enlace de Google Drive:
+
+[🎥 Ver video en Google Drive](https://drive.google.com/file/d/19OvDQnVg9FBSFvwIkMHrG7MivOcxXeO2/view?usp=sharing)
+
+> Este video resume el objetivo, metodología y resultados clave del proyecto de predicción de TEA en niños mediante Aprendizaje Automático.
