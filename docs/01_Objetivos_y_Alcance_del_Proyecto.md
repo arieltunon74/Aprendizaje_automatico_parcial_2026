@@ -7,7 +7,7 @@ Se busca identificar patrones y evaluar la capacidad de los modelos de aprendiza
 
 **Clasificación**: el modelo asigna una categoría
 **Predicción**: el modelo estima cuál es la categoría más probable según los patrones aprendidos
-**La variable objetivo (target)**: shape → forma reportada del objeto según los testigos
+**La variable objetivo (target)**: shape_grouped → forma reportada del objeto según los testigos - agrupada.
 
 Cabe aclarar que no anticipará cuándo o dónde ocurrirá un avistamiento; No identifica visualmente el objeto ni verifica qué era realmente.
 
@@ -43,7 +43,7 @@ El modelo NO busca determinar la existencia de vida extraterrestre ni comprobar 
 
 ## Problema planteado para resolver con un modelo de aprendizaje automático supervisado
 
-¿Es posible clasificar los reportes de avistamientos de objetos voladores no identificados (UFO) según la forma descrita por los testigos, utilizando sus características temporales, geográficas y de duración?
+¿Es posible clasificar los reportes de avistamientos de objetos voladores no identificados (UFO - OVNI - UAP) según la forma descrita por los testigos, utilizando sus características temporales, geográficas y de duración?
 
 ---
 
@@ -55,6 +55,24 @@ Se utilizarán como variables predictoras todas las variables disponibles en el 
 
 `posted_date` se conservará inicialmente para evaluar su posible utilidad en el desarrollo del modelo, es decir que su inclusión como variable predictora dependerá de los resultados del análisis exploratorio y de su relevancia para el objetivo de clasificación.
 Las fechas están representadas como texto y podrían convertirse a un tipo temporal.
+
+---
+
+## Medidas de prevención de dataleak - Justificación de la elección de las variables
+
+En el proyecto de clasificación de formas de OVNIs, las variables excluidas para evitar la fuga de datos (data leakage) y el sobreajuste incluyen principalmente las siguientes:
+
+La variable original `shape`: Fue descartada por tratarse de la fuente directa de la cual se derivó la variable objetivo (`shape_grouped`), lo que constituiría una fuga directa de la etiqueta a predecir.
+
+Fechas de publicación posteriores (`posted_date`, `posted_year`, `posted_month`, `posted_dayofweek`): Excluidas porque la fecha en que se reporta o publica un avistamiento en la base de datos ocurre después de este, representando información futura que no estaría disponible en un escenario de predicción real.
+
+Versiones redundantes de duración (duration en formato de texto o variantes previas): Se descartaron para evitar duplicidad, conservando únicamente la variable numérica estandarizada (`duration_seconds`).
+
+Variables de alta cardinalidad específica (`city`): Se omitieron campos como la ciudad exacta para evitar un sobreajuste (overfitting) severo, priorizando en su lugar atributos espaciales y contextuales más amplios como `state_grouped` y `us_region`.
+
+Esta selección rigurosa garantiza que el modelo aprenda a partir de patrones temporales, espaciales y cuantitativos reales (`duration_seconds`, años, estaciones, etc.) y no de indicios directos de la respuesta o información del futuro.
+El entrenamiento (la división de los datos y la definición de la estrategia) ocurrió lógicamente primero, pero operativamente el escalado se ajustó exclusivamente dentro del conjunto de entrenamiento para evitar fugas de datos (data leakage).
+
 
 ---
 
@@ -88,17 +106,20 @@ El proyecto fue desarrollado siguiendo las etapas clásicas de un flujo de traba
 
 1. Obtención de datos.
 2. Limpieza y preparación.
-3. Integración de datasets.
+3. Integración de dataset.
 4. Construcción de variables derivadas unificando datos.
 5. Análisis exploratorio de datos.
-
-   En progreso...
+6. Imputaciones (SimpleImputer), Escalados (StandardScaler)
+7. Codificaciones (OrdinalEncoder y OneHotEncoder)
+8. División de 80% para entrenamiento y 20% para prueba
+9. Modelado de Random Forest - Entrenamiento del algoritmo de ensamblaje optimizado para clasificación multiclase.
+10. Muestra de resultados.
 
 ---
 
-# Modelos Utilizados
+# Modelo Utilizado
 
-En progreso...
+Random Forest (con balance de clases)
 
 ---
 
@@ -158,4 +179,15 @@ Las siguientes variables del dataset presentan niveles de cardinalidad controlad
 
 ---
 
+## Conclusiones generales sobre el modelo
+
+En función del objetivo en este proyecto y de los resultados obtenidos mediante el modelo Random Forest con balanceo de clases, los resultados permiten observar que el modelo consigue aprender algunos patrones de los registros históricos, puede reconocer determinadas categorías de forma de OVNI mejor que otras; pero en general tiene grandes dificultades para distinguir las siete categorías de formas definidas en shape_grouped, alcanzando un rendimiento predictivo limitado.
+
+Eso podría estar relacionado a la naturaleza del problema: la forma reportada es una descripción subjetiva del testigo y las variables de contexto (cuándo, dónde, cuánto duró) aportan muy poca información sobre ella.
+
+Por eso dicho modelo no alcanza a predecir con precisión la forma de un objeto volador no identificado a partir de las características temporales, geográficas, de duración de los avistamientos que se presentaron como variables de entrada, pues la forma ( especificadas en shape o shape_grouped) es una percepción del testigo, no una consecuencia de la hora, la estación o el estado donde ocurre. Esas variables describen el contexto, no el objeto.
+
+El modelo alcanzó una accuracy de 21,1 % y un F1 macro de 0,19 sobre siete clases, un desempeño comparable al de una predicción aleatoria. Observando las métricas obtenidas, el “buen” desempeño de Fireball (recall 53 %) podría estar relacionado con el balanceo de clases, su precisión es de sólo 18 %, o sea que el modelo identifica una parte de los casos reales, pero también clasifica incorrectamente como Fireball muchos registros de otras categorías. Lo mismo ocurre con las formas Disc y Triangle. El rendimiento limitado no se debe principalmente a la elección del algoritmo, sino a la baja relación entre las variables predictoras y la variable objetivo.
+
+El rendimiento obtenido indica que todavía existen oportunidades de mejora mediante la experimentación con otros algoritmos y diferentes estrategias de tratamiento de las variables que no implementamos como por ejemplo tomar como variable objetivo 'duration_seconds' como un problema de regresion, también realizar pruebas con modelos de aprendizaje no-supervisados. Otra alternativa que puede quedar como objeto de otra línea de investigación es analizar el texto de los reportes (columna ´summary´ en el dataset original) mediante análisis de texto con modelos NLP (Procesamiento del Lenguaje Natural), que es información importante de estos eventos pero que el modelo actualmente no ve porque no fue considerada dentro del alcance del proyecto; todas estas propuestas quedan delimitadas para otros proyectos en el futuro.
 

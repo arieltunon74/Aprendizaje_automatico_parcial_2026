@@ -1,9 +1,18 @@
+
+<p align="center">
+  <img src="ruta/a/tu/banner.jpg" alt="Banner Principal OVNIS" width="100%">
+</p>
+
+
 # Clasificación de la forma reportada en avistamientos de OVNIS en Estados Unidos mediante aprendizaje automático
 ---
 
 ![Imagen de portada](reports/OVNI.jpg)
  
  ## Índice
+
+ Accesos rápidos:
+
 
 - [1. Descripción del Proyecto](#descripción-del-proyecto)
 - [2. Relevancia del problema](#relevancia-del-problema)
@@ -28,6 +37,8 @@
 
 Este proyecto que tiene como objetivo desarrollar un modelo de aprendizaje automático supervisado capáz de clasificar los reportes de avistamientos de UFO/UAP (OVNIS, objetos voladores no identificados) según la forma con la que los testigos describieron dichos objetos observados.
 
+[⬆️ Volver al índice](#Índice)
+
 ---
 
 ## Relevancia del problema
@@ -36,18 +47,26 @@ Este proyecto utiliza el conjunto de datos **NUFORC UFO Sightings**, una recopil
 El modelo intentará predecir la categoría de forma de un reporte OVNI, pero cabe aclarar que no anticipará cuándo o dónde ocurrirá un avistamiento.
 El modelo NO busca determinar la existencia de vida extraterrestre ni comprobar la naturaleza de los objetos observados.
 
+[⬆️ Volver al índice](#Índice)
+
 ### Pregunta de Investigación e Hipótesis
 
 ¿Es posible predecir con precisión la forma de un objeto volador no identificado a partir de las 
 características temporales, geográficas, de duración de los avistamientos?
 
+[⬆️ Volver al índice](#Índice)
+
 ## Tipo de problema
 
 Clasificación supervisada multiclase
 
+[⬆️ Volver al índice](#Índice)
+
 ## Objetivo General
 
 Intentar clasificar la categoría de la forma de un reporte mediante la aplicación de técnicas de Aprendizaje Automático supervisado mediante clasificación multiclase. Se busca identificar patrones y evaluar la capacidad de los modelos para predecir la forma reportada del objeto (shape) según las características disponibles.
+
+[⬆️ Volver al índice](#Índice)
 
 ### Objetivos específicos
 
@@ -56,6 +75,8 @@ Se buscará desarrollar modelos de aprendizaje automático que permitan predecir
 **Predicción**: el modelo estima cuál es la categoría más probable según los patrones aprendidos
 **Variable objetivo: shape** Es la forma con la que los testigos describieron al objeto volador no identificado, mientras que las demás características disponibles se emplearán como variables predictoras para evaluar la capacidad de los algoritmos de aprendizaje automático para intentar identificar patrones y estimar la categoría correspondiente a cada avistamiento reportado.
 Cabe aclarar que NO anticipará cuándo o dónde ocurrirá un avistamiento; No identifica visualmente el objeto ni verifica qué era realmente.
+
+[⬆️ Volver al índice](#Índice)
 
 ---
 
@@ -67,7 +88,9 @@ Web Site: https://nuforc.org/
 
 La fuente se encuentra en idioma inglés de origen, por lo que los nombres de las columnas, las categorías y las descripciones de los avistamientos están expresados en dicho idioma. Existen datasets derivados de estos registros de NUFORC que contienen más de 120.000 observaciones, con variables como datetime, city, state, country, shape, duration, comments, latitude y longitude. El dataset primario utilizado para este proyecto se extrae del siguiente repositorio: https://www.kaggle.com/datasets/thaddeussegura/ufo-sightings
 
-Data scraped from the National UFO reporting center – By Thaddeus Segura - (DbCL) v1.0 
+Data scraped from the National UFO reporting center – By Thaddeus Segura - (DbCL) v1.0
+
+[⬆️ Volver al índice](#Índice)
 
 ### Acerca de la fuente de información:
 
@@ -80,7 +103,9 @@ La información geográfica también se detalla, con campos que indican la ciuda
 
  UAP (Unidentified Anomalous Phenomena): Fenómenos Anómalos No Identificados. Es un término más amplio que incluye observaciones inexplicables en el aire, el espacio, el mar o entre distintos medios. Anteriormente, UAP también se utilizaba para Unidentified Aerial Phenomena (Fenómenos Aéreos No Identificados). 
 
-**Importante**: que algo sea un UFO / OVNI o UAP no significa que sea de origen extraterrestre. Puede tratarse de aviones, drones, globos, fenómenos atmosféricos u objetos cuya naturaleza todavía se desconoce. Por lo tanto, el objetivo no es determinar si un avistamiento corresponde realmente a una nave extraterrestre, sino analizar los patrones existentes en los reportes registrados por los testigos y que fueron recolectados en la base de datos de NUFORC para luego utilizar modelos de Aprendizaje Automático para intentar predecir la categoría de forma informada en un nuevo registro. 
+**Importante**: que algo sea un UFO / OVNI o UAP no significa que sea de origen extraterrestre. Puede tratarse de aviones, drones, globos, fenómenos atmosféricos u objetos cuya naturaleza todavía se desconoce. Por lo tanto, el objetivo no es determinar si un avistamiento corresponde realmente a una nave extraterrestre, sino analizar los patrones existentes en los reportes registrados por los testigos y que fueron recolectados en la base de datos de NUFORC para luego utilizar modelos de Aprendizaje Automático para intentar predecir la categoría de forma informada en un nuevo registro.
+
+[⬆️ Volver al índice](#Índice)
 
 ---
 
@@ -139,28 +164,77 @@ Tecnologías Utilizadas
 - Git
 - GitHub
 
+[⬆️ Volver al índice](#Índice)
 ---
 
-# Principales Resultados
+## 8. Conclusiones Generales
 
-En progreso...
+El desarrollo de este proyecto permitió aplicar las distintas etapas de un proceso de aprendizaje automático supervisado, desde la exploración y el preprocesamiento de los datos hasta el entrenamiento, la evaluación y la comparación de diferentes modelos de clasificación.
+
+
+**Cumplimiento del objetivo del proyecto**
+
+Se logró desarrollar un modelo de clasificación multiclase capaz de intentar predecir la categoría *shape* (forma) de los reportes de avistamientos UFO/UAP/OVNI, basado en la variable objetivo *shape_grouped* utilizando información descriptiva y temporal de los registros históricos.
+
+De esta manera, se cumplió el objetivo de implementar y evaluar un sistema de clasificación supervisada sobre datos reales aportados por los testigos de elos avistamientos.
+
+**Importancia del preprocesamiento de los datos**
+
+La etapa de limpieza y transformación resultó muy importante para mejorar la calidad del conjunto de datos. Se realizaron tratamientos de valores nulos, normalización de variables, transformación de atributos, ingeniería de características y reducción de categorías poco representadas.
+
+Estas decisiones permitieron construir un conjunto de datos más adecuado para el enfoque de entrenamiento del modelo.
+
+**Resultados y evaluación de los modelos**
+
+Se observó que el tratamiento del desbalance de clases influye significativamente en los resultados.
+
+El modelo Random Forest con balanceo permitió mejorar la capacidad de reconocer algunas categorías minoritarias, aunque esto también produjo un aumento de las falsas predicciones.
+Por ejemplo, la categoría Fireball (Bola de fuego) alcanzó un Recall del 53 %, pero una Precision del 18 %. Esto significa que el modelo consiguió recuperar una proporción mayor de los registros reales de esa categoría, aunque también clasificó incorrectamente numerosos registros como Fireball.
+
+Por lo tanto, los resultados deben interpretarse considerando conjuntamente Precision, Recall y F1-score, y no únicamente la exactitud general (*Accuracy*).
+
+**Limitaciones del modelo**
+
+Los resultados obtenidos muestran que todavía existen dificultades para distinguir correctamente algunas categorías. La distribución desigual de los registros, la similitud entre determinadas descripciones y la limitada información disponible en los reportes representan desafíos importantes para la clasificación.
+
+En consecuencia, el modelo no debe considerarse un sistema de identificación de objetos ni una herramienta capaz de verificar la naturaleza real de los avistamientos.
+
+Su alcance se limita exclusivamente a clasificar los reportes según las formas descriptas por los testigos.
+
+**Aporte y posibilidades de desarrollo**
+
+Más allá de las limitaciones encontradas, el proyecto permitió construir una base de trabajo para continuar investigando la aplicación de técnicas de Ciencia de Datos y Aprendizaje Automático sobre registros históricos de avistamientos UFO/UAP.
+
+Los resultados obtenidos constituyen un punto de partida para experimentar con nuevas características, técnicas de balanceo, selección de variables y algoritmos de clasificación.
+
+**Conclusión final**
+
+En términos generales, el proyecto permitió cumplir el propósito académico y técnico de desarrollar un proceso completo de aprendizaje automático supervisado aplicado a un problema de clasificación multiclase.
+
+Si bien los resultados del modelo seleccionado todavía presentan limitaciones en su capacidad predictiva, el trabajo permitió comprender la importancia de la calidad de los datos, el tratamiento del desbalance de clases y la correcta interpretación de las métricas de evaluación.
+
+[⬆️ Volver al índice](#Índice)
 
 ## 9. Notebooks del Proyecto
 
-- 📘 [`EDA_TEA_INFANCIA.ipynb`](notebooks/EDA_TEA_INFANCIA.ipynb)
-- 📘 [`Modelos_Predictivos_TEA.ipynb`](notebooks/Modelos_Predictivos_TEA.ipynb)
-- 📘 [`Validacion_Optimizacion_Metricas_TEA.ipynb`](notebooks/Validacion_Optimizacion_Metricas_TEA.ipynb)
+- 📘 [`01_Limpieza_y_Preprocesamiento.ipynb`](notebooks/01 - Preprocesamiento y Escalado/01_Limpieza_y_Preprocesamiento_.ipynb)
+- 📘 [`02_Datos_Limpios_y_Preparados.ipynb`](notebooks/01 - Preprocesamiento y Escalado/02_Datos_Limpios_y_Preparados.ipynb)
+- 📘 [`01_Entrenamiento_del_Modelo.ipynb`](notebooks/Validacion_Optimizacion_Metricas_TEA.ipynb)
 
 ## 10. Informes Tecnicos del Proyecto
 
-- 📄 [`Descripcion_Dataset_Original.pdf`](reports/Descripcion_Dataset_Original.pdf)
-- 📄 [`Descripcion_Dataset_Procesado.pdf`](reports/Descripcion_Dataset_Procesado.pdf)
-- 📄 [`Conclusiones.pdf`](reports/Conclusiones.pdf)
+- 📄 [`Objetivos y alcance del proyecto`](docs/01_Objetivos_y_Alcance_del_Proyecto.md)
+- 📄 [`Análisis exploratorio`](docs/02_Analisis_exploratorio.md)
+
+[⬆️ Volver al índice](#Índice)
+
 
 ## 11. Video Presentacion del Proyecto
 
 Podés acceder al video de presentación en el siguiente enlace de Google Drive:
 
-[🎥 Ver video en Google Drive](https://drive.google.com/file/d/19OvDQnVg9FBSFvwIkMHrG7MivOcxXeO2/view?usp=sharing)
+[🎥 Ver video en Google Drive](https://drive.goo.....)
 
-> Este video resume el objetivo, metodología y resultados clave del proyecto de predicción de TEA en niños mediante Aprendizaje Automático.
+> Este video resume el objetivo, metodología y resultados del proyecto de clasificación de la forma reportada en avistamientos de OVNIS en Estados Unidos mediante Aprendizaje Automático.
+
+[⬆️ Volver al índice](#Índice)
