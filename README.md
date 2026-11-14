@@ -3,6 +3,12 @@
 
 ---
 
+### Alumno: Ariel Tuñon
+### Parcial de Aprendizaje Automático 2026
+### Politécnico Superior Malvinas Argentinas
+
+---
+
  ## Índice
 
  Accesos rápidos:

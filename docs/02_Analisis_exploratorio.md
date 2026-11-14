@@ -48,7 +48,7 @@ registra las siguientes dimensiones:
 Estas cifras corresponden al dataset cargado inicialmente, antes de los
 filtros y las transformaciones posteriores realizados durante el trabajo.
 
-## 4. Variables disponibles originalmente
+## 4. Variables disponibles originalmente (9)
 
   -----------------------------------------------------------------------
   Variable                            Descripción
@@ -114,14 +114,12 @@ En esta versión, `id` es la única columna reconocida como numérica
 (`int64`); las otras ocho columnas aparecen con tipo `object`.
 
 `posted_date` se conservará inicialmente para evaluar su posible utilidad en el desarrollo del modelo, es decir que su inclusión como variable predictora dependerá de los resultados del análisis exploratorio y de su relevancia para el objetivo de clasificación.
-Las fechas están representadas como texto y podrían convertirse a un tipo temporal.
-EL PROCESAMIENTO DE DICHOS TEXTOS NO SERÁ TENIDO EN CUENTA dentro del alcance de este proyecto.
 
 ---
 
 # Reporte de Limpieza y Estandarización del Dataset
 
-## DETECCIÓN DE VALORES NULOS - DUPLICADOS - INCOSISTENCIAS (EN EL DATASET)
+## DETECCIÓN DE VALORES NULOS - DUPLICADOS - INCOSISTENCIAS (EN EL DATASET) - Corregidos.
 
 ### No se detectaron valores duplicados
 
@@ -140,7 +138,7 @@ A continuación se presenta la cantidad de valores nulos detectados en cada una 
 
 ---
 
-## Estandarización de la Variable Objetivo (`shape`)
+## Estandarización de la Variable (`shape`)
 
 Para homogenizar las distintas variantes del campo `shape` (forma)
 se aplicó un diccionario de reemplazo que unifica el formato a mayúscula inicial (Title Case) y corrige sinónimos o variaciones especiales.
@@ -198,7 +196,11 @@ Traducciones al español y la terminología utilizada en el proyecto de Aprendiz
 La variable `shape` es la forma aparente del objeto descrita por el testigo. 
 Es una variable categórica nominal que constituye el objetivo de la clasificación supervisada multiclase.
 
-### Otras categorías de valores posibles de `shape` (Forma del OVNI)
+### Otras categorías de valores posibles de `shape` y en la **Variable objeetivo (`shape_grouped`):** (Forma del OVNI - UFO - UAP)
+
+![Avistamientos UFO-UAP-OVNIS](reports/figures/03-UFO-UAP-OVNIS.jpg)
+
+
 
 | Categoría (inglés) | Traducción al español |
 |---|---|
@@ -224,6 +226,8 @@ Es una variable categórica nominal que constituye el objetivo de la clasificaci
 | `Unknown` | Desconocido |
 | `Other` | Otra forma |
 
+
+
 ## 3. Glosario de términos
 
 ```
@@ -236,10 +240,16 @@ Es una variable categórica nominal que constituye el objetivo de la clasificaci
 
 ## 4. Consideraciones sobre las variables
 
-- **Variable objetivo (`shape`):** Es la categoría que el modelo de aprendizaje automático intentará predecir.
+- **Variable (`shape`):** Es la categoría que se toma en base para el modelo de aprendizaje automático que luego con un sub-grupo intentará predecir.
+
+- **Variable (`shape_grouped`):** Es la variable objetivo.
+
 - **Variables predictoras:** podrán seleccionarse a partir de las características temporales, geográficas y de duración de los avistamientos.
-- **Identificadores y referencias:** `id` y `details_url` se utilizan principalmente para identificar y consultar los registros, por lo que no se consideran inicialmente variables predictoras.
+
+- **Identificadores y referencias:** `id` y `details_url` se utilizan principalmente para identificar y consultar los registros, por lo que no se consideran inicialmente variables predictoras y no se tendrán en cuenta para los análisis.
+
 - **Información textual:** `summary` contiene descripciones de los testigos, no se tendrá en cuenta para los análisis.
+
 - **Fecha de publicación:** `posted_date` puede utilizarse para generar características temporales y evaluar su posible aporte al modelo.
 
 ## 5. DICCIONARIO
@@ -281,19 +291,15 @@ Es una variable categórica nominal que constituye el objetivo de la clasificaci
 ## 6. Consideraciones sobre el dataset
 
 La cantidad de registros y los tipos de datos indicados corresponden a
-la carga inicial observada en el notebook 01_Limpieza_y_Preprocesamiento.ipynb.
+la carga inicial observada en el notebook: **01_Limpieza_y_Preprocesamiento.ipynb**.
 
-Los datos nulos, las inconsistencias, las categorías poco frecuentes y las transformaciones
-que se apliquen se documentarán en las etapas posteriores del
-proyecto, sin confundir esta descripción del origen y la composición del
-dataset con el informe completo del análisis exploratorio o del
-preprocesamiento.
+Los datos nulos, las inconsistencias, las categorías poco frecuentes y las transformaciones que se apliquen se documentarán en las etapas posteriores del proyecto, sin confundir esta descripción del origen y la composición del dataset con el informe completo del análisis exploratorio o del preprocesamiento.
 
-El notebook con los datos limpios para comenzar a modelar es: 02_Datos_Limpios_y_Preparados.ipynb
+El notebook con los datos limpios para comenzar a modelar es: **02_Datos_Limpios_y_Preparados.ipynb**
 
 ## 7. Características Generales
 
-En la carga inicial del archivo `clean_ufo_data.csv`, el notebook
+En la carga inicial del archivo del dataset crudo (raw) `clean_ufo_data.csv`, el notebook
 registra las siguientes dimensiones:
 
 
@@ -309,7 +315,7 @@ registra las siguientes dimensiones:
 
 # Dataset Final
 
-El dataset final fue construido mediante la integración de las columnas.
+El dataset final fue construido mediante la integración de alguna de sus columnas.
 
 `dataset_procesado.csv` - 14.5 mb
 
@@ -496,6 +502,8 @@ En esta etapa se crea una nueva variable categórica que permite clasificar los 
 
 Con cuatro clases —`Late Night`, `Morning`, `Afternoon` y `Evening/Night`— para analizar la distribución horaria de los avistamientos y explorar su relación con otras variables del dataset.
 
+![Heatmap de avistamientos por día y hora](reports/figures/15-HEATMAP_AVISTAMIENTOS%20POR%20DIA%20Y%20HORA.jpg)
+
 ## JUSTIFICACIÓN
 
 El objetivo de esta transformación para crear la columna `time_of_day` es incorporar información sobre el momento del día en que se producen los avistamientos, con el propósito de:
@@ -511,19 +519,23 @@ Incorporar información predictiva: proporcionar al modelo de aprendizaje autom�
 
 ## Fin de Semana vs. Día de Semana (`is_weekend`)
 
-Una variable binaria categórica que indica si el avistamiento ocurrió en fin de semana (Sábado, Domingo) o entre semana. Muchas veces la actividad de reportes cambia radicalmente durante el tiempo libre de las personas
+Una variable binaria categórica que indica si el avistamiento ocurrió en fin de semana (Sábado, Domingo) o entre semana. Muchas veces la actividad de reportes cambia radicalmente durante el tiempo libre de las personas.
 
----
 
-## Agrupación de la Forma del OVNI (`shape_grouped`)
-
-La columna `shape` (forma) suele tener muchas categorías con pocos registros (como cigar, chevron, delta, etc.). Agrupar las formas menos frecuentes en una categoría general llamada "Others" evita la maldición de la dimensionalidad al aplicar One-Hot Encoding para modelos como Regresión Logística o K-NN. Esta será la nueva VARIABLE OBJETIVO durante las prediccionees que realize el modelo.
+![Distribuciones temporales de avistamientos OVNI](reports/figures/07-DISTRIBUCIONES_TEMPORALES.jpg)
 
 ---
 
 ## Categoría de la Década (`decade`)
 
 Permite agrupar los años de los avistamientos por décadas (ej. 1990s, 2000s, 2010s), lo cual ayuda a capturar tendencias históricas de reporte a largo plazo.
+
+---
+
+## Agrupación de la Forma del OVNI (`shape_grouped`)
+
+
+![Distribución de shape y shape_grouped](reports/figures/04-DISTRIBUCION_shape_Y_shape_grouped.jpg)
 
 ---
 
@@ -541,11 +553,14 @@ La selección se fundamenta en los siguientes criterios:
 - **Representatividad:** se busca trabajar con un conjunto de observaciones que permita analizar una mayor variedad de reportes y características.
 - **Preparación para el aprendizaje automático:** se procura disponer de un volumen de datos adecuado para las etapas de entrenamiento y evaluación de los modelos.
 
+
 ### Criterio de selección - Alcance del proyecto
 
 Se conservan únicamente los registros que cumplen la siguiente condición:
 
 **1962 ≤ año de observación ≤ 2021**
+
+![Avistamientos de OVNIs por año](reports/figures/08-AVISTAMIENTOS_POR_AÑO.jpg)
 
 De esta manera, se excluyen los registros anteriores a 1962 y posteriores a 2021, delimitando un período uniforme para las etapas posteriores del proyecto.
 
@@ -554,6 +569,12 @@ De esta manera, se excluyen los registros anteriores a 1962 y posteriores a 2021
 #CREACIÓN DE LA COLUMNA `state` — AGRUPACIÓN GEOGRÁFICA
 
 En esta etapa se analiza la variable geográfica `state`, que identifica el estado o la región administrativa en Estados Unidos asociada a cada avistamiento OVNI.
+
+![Distribución de Estados Unidos por regiones](reports/figures/05-EEUU-REGIONES.jpg)
+
+
+![Distribución de regiones de Estados Unidos](reports/figures/06-DISTRIBUCIÓN_REGIONES_EEUU.jpg)
+
 
 El objetivo es organizar y estandarizar la información geográfica para facilitar el análisis de la distribución espacial de los reportes e identificar posibles diferencias entre las regiones representadas en el dataset.
 
@@ -702,6 +723,10 @@ En esta etapa se revisan y normalizan los registros de la columna duration que p
 Se realizaron pruebas con otros diferentes modelos de aprendizaje automático supervisado como Regresión Logística Multinomial, Arboles de decisión y KNN; tanto para las 27 variables de shape como para las 7 de shape_grouped, pero no se obtuvieron resultados significativos, es decir que estos modelos probados presentaron un desempeño inferior según las métricas de evaluación.
 
 El modelo elegido fue Random Forest, fue seleccionado por presentar el mejor desempeño relativo, no porque necesariamente sea el mejor algoritmo para cualquier problema de clasificación.
+
+![Matriz de confusión del modelo Random Forest](reports/figures/09-MATRIZ_CONFUSION_RANDOM_FOREST.jpg)
+
+![Esquema del modelo Random Forest](reports/figures/10-RANDOM_FOREST_ESQUEMA.jpg)
 
 ---
 
