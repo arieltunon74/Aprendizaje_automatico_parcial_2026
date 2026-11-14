@@ -123,7 +123,7 @@ Random Forest (con balance de clases)
 
 ---
 
-## Modelos de aprendizaje automático supervisados que podría utilizar: 
+## Modelos de aprendizaje automático supervisados que se probaron: 
 
 **Regresión Logística Multiclase o Multinomial**: para predecir la forma del OVNI (shape), 
 permitiendo evaluar la probabilidad de pertenencia a cada clase e interpretar mediante sus 
@@ -178,6 +178,52 @@ Las siguientes variables del dataset presentan niveles de cardinalidad controlad
 | `is_weekend` | Es una variable binaria intrínseca ($0/1$ o `True/False`). | No requiere transformación adicionales. | 
 
 ---
+
+## Conclusiones Generales
+
+El desarrollo de este proyecto permitió aplicar las distintas etapas de un proceso de aprendizaje automático supervisado, desde la exploración y el preprocesamiento de los datos hasta el entrenamiento, la evaluación y la comparación de diferentes modelos de clasificación.
+
+
+**Cumplimiento del objetivo del proyecto**
+
+Se logró desarrollar un modelo de clasificación multiclase capaz de intentar predecir la categoría *shape* (forma) de los reportes de avistamientos UFO/UAP/OVNI, basado en la variable objetivo *shape_grouped* utilizando información descriptiva y temporal de los registros históricos.
+
+De esta manera, se cumplió el objetivo de implementar y evaluar un sistema de clasificación supervisada sobre datos reales aportados por los testigos de elos avistamientos.
+
+**Importancia del preprocesamiento de los datos**
+
+La etapa de limpieza y transformación resultó muy importante para mejorar la calidad del conjunto de datos. Se realizaron tratamientos de valores nulos, normalización de variables, transformación de atributos, ingeniería de características y reducción de categorías poco representadas.
+
+Estas decisiones permitieron construir un conjunto de datos más adecuado para el enfoque de entrenamiento del modelo.
+
+**Resultados y evaluación de los modelos**
+
+Se observó que el tratamiento del desbalance de clases influye significativamente en los resultados.
+
+El modelo Random Forest con balanceo permitió mejorar la capacidad de reconocer algunas categorías minoritarias, aunque esto también produjo un aumento de las falsas predicciones.
+Por ejemplo, la categoría Fireball (Bola de fuego) alcanzó un Recall del 53 %, pero una Precision del 18 %. Esto significa que el modelo consiguió recuperar una proporción mayor de los registros reales de esa categoría, aunque también clasificó incorrectamente numerosos registros como Fireball.
+
+Por lo tanto, los resultados deben interpretarse considerando conjuntamente Precision, Recall y F1-score, y no únicamente la exactitud general (*Accuracy*).
+
+**Limitaciones del modelo**
+
+Los resultados obtenidos muestran que todavía existen dificultades para distinguir correctamente algunas categorías. La distribución desigual de los registros, la similitud entre determinadas descripciones y la limitada información disponible en los reportes representan desafíos importantes para la clasificación.
+
+En consecuencia, el modelo no debe considerarse un sistema de identificación de objetos ni una herramienta capaz de verificar la naturaleza real de los avistamientos.
+
+Su alcance se limita exclusivamente a clasificar los reportes según las formas descriptas por los testigos.
+
+**Aporte y posibilidades de desarrollo**
+
+Más allá de las limitaciones encontradas, el proyecto permitió construir una base de trabajo para continuar investigando la aplicación de técnicas de Ciencia de Datos y Aprendizaje Automático sobre registros históricos de avistamientos UFO/UAP.
+
+Los resultados obtenidos constituyen un punto de partida para experimentar con nuevas características, técnicas de balanceo, selección de variables y algoritmos de clasificación.
+
+**Conclusión final**
+
+En términos generales, el proyecto permitió cumplir el propósito académico y técnico de desarrollar un proceso completo de aprendizaje automático supervisado aplicado a un problema de clasificación multiclase.
+
+Si bien los resultados del modelo seleccionado todavía presentan limitaciones en su capacidad predictiva, el trabajo permitió comprender la importancia de la calidad de los datos, el tratamiento del desbalance de clases y la correcta interpretación de las métricas de evaluación.
 
 ## Conclusiones generales sobre el modelo
 
