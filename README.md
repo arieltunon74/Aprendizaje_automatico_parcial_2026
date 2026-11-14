@@ -1,4 +1,5 @@
 
+![Banner del proyecto](reports/figures/01%20-%20BANNER.png)
 
 # Clasificación de la forma reportada en avistamientos de OVNIS en Estados Unidos mediante aprendizaje automático
 ---
