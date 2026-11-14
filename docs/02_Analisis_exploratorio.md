@@ -504,7 +504,7 @@ En esta etapa se crea una nueva variable categórica que permite clasificar los 
 
 Con cuatro clases —`Late Night`, `Morning`, `Afternoon` y `Evening/Night`— para analizar la distribución horaria de los avistamientos y explorar su relación con otras variables del dataset.
 
-![Heatmap de avistamientos por día y hora](reports/figures/15-HEATMAP_AVISTAMIENTOS%20POR%20DIA%20Y%20HORA.jpg)
+![Heatmap de avistamientos por día y hora](../reports/figures/15-HEATMAP_AVISTAMIENTOS%20POR%20DIA%20Y%20HORA.jpg)
 
 ## JUSTIFICACIÓN
 
@@ -727,9 +727,15 @@ Se realizaron pruebas con otros diferentes modelos de aprendizaje automático su
 
 El modelo elegido fue Random Forest, fue seleccionado por presentar el mejor desempeño relativo, no porque necesariamente sea el mejor algoritmo para cualquier problema de clasificación.
 
-![Matriz de confusión del modelo Random Forest](reports/figures/09-MATRIZ_CONFUSION_RANDOM_FOREST.jpg)
+![Matriz de confusión Random Forest](../reports/figures/09-MATRIZ_CONFUSION_RANDOM_FORESTjpg.jpg)
 
-![Esquema del modelo Random Forest](reports/figures/10-RANDOM_FOREST_ESQUEMA.jpg)
+![Esquema Random Forest](../reports/figures/10-RANDOM_FOREST_ESQUEMA.jpg)
+
+![Características de Random Forest](../reports/figures/11-CARACTERISTICAS_EN_RANDOM_FOREST.jpg)
+
+![Distribución real y predicha Random Forest](../reports/figures/12-DISTRIBUCI%C3%93N_REAL_Y_PREDICHA_RANDOM_FOREST.jpg)
+
+![Métricas por categorías Random Forest](../reports/figures/13-METRICAS_POR_CATEGORIAS_RANDOM_FORESTjpg.jpg)
 
 ---
 
