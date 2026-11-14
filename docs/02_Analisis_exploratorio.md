@@ -198,7 +198,7 @@ Es una variable categórica nominal que constituye el objetivo de la clasificaci
 
 ### Otras categorías de valores posibles de `shape` y en la **Variable objeetivo (`shape_grouped`):** (Forma del OVNI - UFO - UAP)
 
-![Avistamientos UFO-UAP-OVNIS](reports/figures/03-UFO-UAP-OVNIS.jpg)
+![Avistamientos UFO-UAP-OVNIS](../reports/figures/03-UFO-UAP-OVNIS.jpg)
 
 
 
@@ -524,7 +524,7 @@ Incorporar información predictiva: proporcionar al modelo de aprendizaje autom�
 Una variable binaria categórica que indica si el avistamiento ocurrió en fin de semana (Sábado, Domingo) o entre semana. Muchas veces la actividad de reportes cambia radicalmente durante el tiempo libre de las personas.
 
 
-![Distribuciones temporales de avistamientos OVNI](reports/figures/07-DISTRIBUCIONES_TEMPORALES.jpg)
+![Distribuciones temporales](../reports/figures/07-DISTRIBUCIONES_TEMPORALES.jpg)
 
 ---
 
@@ -537,7 +537,7 @@ Permite agrupar los años de los avistamientos por décadas (ej. 1990s, 2000s, 2
 ## Agrupación de la Forma del OVNI (`shape_grouped`)
 
 
-![Distribución de shape y shape_grouped](reports/figures/04-DISTRIBUCION_shape_Y_shape_grouped.jpg)
+![Distribución de shape y shape_grouped](../reports/figures/04-DISTRIBUCION_shape_Y_shape_grouped.jpg)
 
 ---
 
@@ -552,7 +552,9 @@ Se decide delimitar el período de análisis entre los años **1962 y 2021**, am
 La selección se fundamenta en los siguientes criterios:
 
 - **Disponibilidad de datos:** se prioriza un período que contiene una cantidad significativa de registros, permitiendo disponer de información suficiente para el análisis.
+
 - **Representatividad:** se busca trabajar con un conjunto de observaciones que permita analizar una mayor variedad de reportes y características.
+
 - **Preparación para el aprendizaje automático:** se procura disponer de un volumen de datos adecuado para las etapas de entrenamiento y evaluación de los modelos.
 
 
@@ -562,7 +564,7 @@ Se conservan únicamente los registros que cumplen la siguiente condición:
 
 **1962 ≤ año de observación ≤ 2021**
 
-![Avistamientos de OVNIs por año](reports/figures/08-AVISTAMIENTOS_POR_AÑO.jpg)
+![Avistamientos por año](../reports/figures/08-AVISTAMIENTOS_POR_A%C3%91O.jpg)
 
 De esta manera, se excluyen los registros anteriores a 1962 y posteriores a 2021, delimitando un período uniforme para las etapas posteriores del proyecto.
 
@@ -572,11 +574,10 @@ De esta manera, se excluyen los registros anteriores a 1962 y posteriores a 2021
 
 En esta etapa se analiza la variable geográfica `state`, que identifica el estado o la región administrativa en Estados Unidos asociada a cada avistamiento OVNI.
 
-![Distribución de Estados Unidos por regiones](reports/figures/05-EEUU-REGIONES.jpg)
+![Estados Unidos por regiones](../reports/figures/05-EEUU-REGIONES.jpg)
 
 
-![Distribución de regiones de Estados Unidos](reports/figures/06-DISTRIBUCIÓN_REGIONES_EEUU.jpg)
-
+![Distribución de regiones de Estados Unidos](../reports/figures/06-DISTRIBUCI%C3%93N_REGIONES_EEUU.jpg)
 
 El objetivo es organizar y estandarizar la información geográfica para facilitar el análisis de la distribución espacial de los reportes e identificar posibles diferencias entre las regiones representadas en el dataset.
 
