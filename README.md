@@ -11,18 +11,15 @@
 - [1. Descripción del Proyecto](#descripción-del-proyecto)
 - [2. Relevancia del problema](#relevancia-del-problema)
 - [3. Pregunta e Hipótesis](#relevancia-del-problema)
-- [4. Tipo de Problema](#4-tipo-de-problema)
+- [4. Tipo de Problema](#Tipo-de-problema)
 - [5. Objetivo General](#objetivo-general)
  - [5.1. Objetivos Especificos](#objetivos-específicos)
 - [6. Fuente de los Datos](#fuente-de-los-datos)
  - [6.1. Acerca de la fuente de información](#acerca-de-la-fuente-de-información)
 - [7. Organización del proyecto](#organización-del-proyecto)
-- [8. Conclusiones Generales](#6-conclusiones-generales)
-- [9. Mejor modelo seleccionado](#7-Mejor-Modelo-Seleccionado)
-- [10. proyectos a futuro](#8-Aporte-a-Tierra-del-Fuego)
-- 📘 [10. Notebooks del Proyecto](#9-notebooks-del-proyecto)
-- 📄 [11. Informes Tecnicos del Proyecto](#10-informes-tecnicos-del-proyecto)
-- 🎥 [12. Video Presentacion del Proyecto](#11-video-presentacion-del-proyecto)
+- 📘 [08. Notebooks del Proyecto](#9-notebooks-del-proyecto)
+- 📄 [09. Informes Tecnicos del Proyecto](#10-informes-tecnicos-del-proyecto)
+- 🎥 [10. Video Presentacion del Proyecto](#11-video-presentacion-del-proyecto)
 
 ---
 
@@ -43,10 +40,13 @@ El modelo NO busca determinar la existencia de vida extraterrestre ni comprobar 
 ¿Es posible predecir con precisión la forma de un objeto volador no identificado a partir de las 
 características temporales, geográficas, de duración de los avistamientos?
 
+[⬆️ Volver al índice](#Índice)
 
 ## Tipo de problema
 
+
 Clasificación supervisada multiclase
+
 
 ## Objetivo General
 
@@ -68,6 +68,7 @@ Se buscará desarrollar modelos de aprendizaje automático que permitan predecir
 
 Cabe aclarar que NO anticipará cuándo o dónde ocurrirá un avistamiento; No identifica visualmente el objeto ni verifica qué era realmente.
 
+
 [⬆️ Volver al índice](#Índice)
 
 ---
@@ -81,6 +82,7 @@ Web Site: https://nuforc.org/
 La fuente se encuentra en idioma inglés de origen, por lo que los nombres de las columnas, las categorías y las descripciones de los avistamientos están expresados en dicho idioma. Existen datasets derivados de estos registros de NUFORC que contienen más de 120.000 observaciones, con variables como datetime, city, state, country, shape, duration, comments, latitude y longitude. El dataset primario utilizado para este proyecto se extrae del siguiente repositorio: https://www.kaggle.com/datasets/thaddeussegura/ufo-sightings
 
 Data scraped from the National UFO reporting center – By Thaddeus Segura - (DbCL) v1.0
+
 
 [⬆️ Volver al índice](#Índice)
 
@@ -96,6 +98,7 @@ La información geográfica también se detalla, con campos que indican la ciuda
  UAP (Unidentified Anomalous Phenomena): Fenómenos Anómalos No Identificados. Es un término más amplio que incluye observaciones inexplicables en el aire, el espacio, el mar o entre distintos medios. Anteriormente, UAP también se utilizaba para Unidentified Aerial Phenomena (Fenómenos Aéreos No Identificados). 
 
 **Importante**: que algo sea un UFO / OVNI o UAP no significa que sea de origen extraterrestre. Puede tratarse de aviones, drones, globos, fenómenos atmosféricos u objetos cuya naturaleza todavía se desconoce. Por lo tanto, el objetivo no es determinar si un avistamiento corresponde realmente a una nave extraterrestre, sino analizar los patrones existentes en los reportes registrados por los testigos y que fueron recolectados en la base de datos de NUFORC para luego utilizar modelos de Aprendizaje Automático para intentar predecir la categoría de forma informada en un nuevo registro.
+
 
 [⬆️ Volver al índice](#Índice)
 
@@ -201,5 +204,6 @@ Podés acceder al video de presentación en el siguiente enlace de Google Drive:
 [🎥 Ver video en Google Drive](https://drive.goo.....)
 
 > Este video resume el objetivo, metodología y resultados del proyecto de clasificación de la forma reportada en avistamientos de OVNIS en Estados Unidos mediante Aprendizaje Automático.
+
 
 [⬆️ Volver al índice](#Índice)
