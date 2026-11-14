@@ -1,13 +1,17 @@
 
-<p align="center">
-  <img src="ruta/a/tu/banner.jpg" alt="Banner Principal OVNIS" width="100%">
-</p>
-
 
 # Clasificación de la forma reportada en avistamientos de OVNIS en Estados Unidos mediante aprendizaje automático
 ---
 
-![Imagen de portada](reports/OVNI.jpg)
+![Imagen de portada](Aprendizaje_automatico_parcial_2026/reports/figures
+/02 - formas - shape.jpg)
+
+<div align="center">
+
+<img src="Aprendizaje_automatico_parcial_2026/reports/figures
+/02 - formas - shape.jpg" alt="PRUEBA" width="100%"/>
+
+<br/>
  
  ## Índice
 
