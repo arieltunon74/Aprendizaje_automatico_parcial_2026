@@ -3,15 +3,8 @@
 # Clasificación de la forma reportada en avistamientos de OVNIS en Estados Unidos mediante aprendizaje automático
 ---
 
-![Imagen de portada](Aprendizaje_automatico_parcial_2026/reports/figures
-/02 - formas - shape.jpg)
+![Imagen de portada](reports/figures/02%20-%20formas%20-%20shape.jpg)
 
-<div align="center">
-
-<img src="Aprendizaje_automatico_parcial_2026/reports/figures
-/02 - formas - shape.jpg" alt="PRUEBA" width="100%"/>
-
-<br/>
  
  ## Índice
 
@@ -21,7 +14,6 @@
 - [1. Descripción del Proyecto](#descripción-del-proyecto)
 - [2. Relevancia del problema](#relevancia-del-problema)
 - [3. Pregunta e Hipótesis](#relevancia-del-problema)
-  - [3.1. Pregunta de Investigación e Hipótesis](#pregunta-de-investigación-e-hipótesis)
 - [4. Tipo de Problema](#4-tipo-de-problema)
 - [5. Objetivo General](#objetivo-general)
  - [5.1. Objetivos Especificos](#objetivos-específicos)
