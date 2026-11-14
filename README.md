@@ -64,13 +64,13 @@ Intentar clasificar la categoría de la forma de un reporte mediante la aplicaci
 
 ### Objetivos específicos
 
-Se buscará desarrollar modelos de aprendizaje automático que permitan predecir la forma reportada por los testigos en dichos avistamientos, a partir de las características disponibles en el conjunto de datos.
+Desarrollar un modelos de aprendizaje automático que permita predecir la forma reportada por los testigos en dichos avistamientos, a partir de las características disponibles en el conjunto de datos.
 
 **Clasificación**: el modelo asigna una categoría
 
 **Predicción**: el modelo estima cuál es la categoría más probable según los patrones aprendidos
 
-**Variable objetivo: shape** Es la forma con la que los testigos describieron al objeto volador no identificado, mientras que las demás características disponibles se emplearán como variables predictoras para evaluar la capacidad de los algoritmos de aprendizaje automático para intentar identificar patrones y estimar la categoría correspondiente a cada avistamiento reportado.
+**Variable objetivo: shape_grouped** Son las formas (shape) con la que los testigos describieron al objeto volador no identificado, mientras que las demás características disponibles se emplearán como variables predictoras para evaluar la capacidad de los algoritmos de aprendizaje automático para intentar identificar patrones y estimar la categoría correspondiente a cada avistamiento reportado.
 
 Cabe aclarar que NO anticipará cuándo o dónde ocurrirá un avistamiento; No identifica visualmente el objeto ni verifica qué era realmente.
 

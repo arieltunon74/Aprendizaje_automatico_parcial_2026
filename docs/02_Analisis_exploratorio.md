@@ -475,10 +475,12 @@ Esta transformación permite incorporar información estacional al dataset y exp
 
 ### Criterio de clasificación — Hemisferio norte
 
-| ☀️ Verano (*Summer*) | Junio, julio y agosto |
-| 🍂 Otoño (*Autumn/Fall*) | Septiembre, octubre y noviembre |
-| ❄️ Invierno (*Winter*) | Diciembre, enero y febrero |
-| 🌸 Primavera (*Spring*) | Marzo, abril y mayo |
+| Estación | Nombre en inglés | Meses |
+|:---|:---|:---|
+| ☀️ Verano | *Summer* | Junio, julio y agosto |
+| 🍂 Otoño | *Autumn / Fall* | Septiembre, octubre y noviembre |
+| ❄️ Invierno | *Winter* | Diciembre, enero y febrero |
+| 🌸 Primavera | *Spring* | Marzo, abril y mayo |
 
 ### Procedimiento: Guardar el resultado en la nueva columna `north_season`.
 
