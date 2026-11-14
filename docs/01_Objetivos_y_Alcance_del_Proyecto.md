@@ -80,23 +80,15 @@ El entrenamiento (la división de los datos y la definición de la estrategia) o
 
 Resultado del proceso de limpieza, transformación y preparación de los datos, con el objetivo de obtener un conjunto de datos consistente y adecuado para el desarrollo de modelos de Aprendizaje Automático.
 
-Después del preprocesamiento, el dataset principal cuenta con 111.741 filas (instancias) y 28 columnas adicionales, generadas principalmente mediante la transformación de variables numéricas en categóricas y la creación de nuevas características derivadas.
+Después del preprocesamiento, el dataset principal cuenta con 79,695 filas (instancias) y 25 columnas (16 columnas adicionales generadas principalmente mediante la transformación de variables numéricas en categóricas y la creación de nuevas características derivadas.)
 
-Filtrando haciendo foco de las observaciones en Estados Unidos, el dataset considera  99,202 filas
+Filtrando y haciendo foco de las observaciones en Estados Unidos, el dataset considera 79,695 filas
 
-Sin embargo  aplicó un filtrado en los avistamientos Ligth y Unknown por no tener una forma de objeto definida para clasificar, considerando el dataset 62,273 filas y 27 columnas adicionales luego de este filtrado.
+Asimismo, se realizó un análisis de las variables disponibles para determinar su utilidad como predictoras. Se decidió excluir summary y details_url, por tener valores en texto que no serán considerados en este proyecto.
 
-Asimismo, se realizó un análisis de las variables disponibles para determinar su utilidad como predictoras. Se decidió excluir summary y details_url, mientras que la posible utilidad de date_posted se evaluará durante el desarrollo de los modelos.
+Se contempló el tratamiento de variables temporales y geográficas. A partir de `occurred_date_time`, se podrán obtener características como año, mes, día, hora, día de la semana y estación del año. 
 
-Se descartaron las categorías light, other y unknown por considerarse poco específicas o ambiguas. Asimismo, se eliminaron las categorías delta, crescent, round, diamond, hexagon, flare, dome y pyramid debido a su baja frecuencia de aparición en el conjunto de datos, con el objetivo de reducir la cantidad de clases y facilitar el proceso de clasificación multiclase.
-
-En caso necesario, luego se retomará el análisis de las categorías light, other y unknown por tener muchas frecuencias.
-
-También se contempló el tratamiento de variables temporales y geográficas. A partir de occurred_date_time, se podrán obtener características como año, mes, día, hora, día de la semana y estación del año. Para la variable state, se podrán realizar agrupaciones geográficas o generar nuevas características que permitan representar mejor la ubicación de los avistamientos.
-
-Por otra parte, se evaluó la distribución de las categorías de la variable objetivo shape, con el propósito de identificar las categorías adecuadas para el problema de clasificación multiclase y definir su tratamiento según su frecuencia y representatividad.
-
-El resultado es un conjunto de datos preparado para continuar con el análisis exploratorio, la selección de características y la implementación y evaluación de diferentes algoritmos de clasificación multiclase.
+Por otra parte, se evaluó la distribución de las categorías de la variable objetivo `shape` y `shape_grouped`, con el propósito de identificar las categorías adecuadas para el problema de clasificación multiclase y definir su tratamiento según su frecuencia y representatividad.
 
 ---
 
@@ -123,24 +115,16 @@ Random Forest (con balance de clases)
 
 ---
 
-## Modelos de aprendizaje automático supervisados que se probaron: 
+## Modelos de aprendizaje automático supervisados que se probaron pero no se implementaron: 
 
 **Regresión Logística Multiclase o Multinomial**: para predecir la forma del OVNI (shape), 
-permitiendo evaluar la probabilidad de pertenencia a cada clase e interpretar mediante sus 
-coeficientes el impacto de las variables temporales, geográficas, de duración de cada categoría.
+permitiendo evaluar la probabilidad de pertenencia a cada clase.
 
 **Árbol de Decisión**: Se selecciona este modelo supervisado debido a su capacidad para ofrecer 
 reglas de decisión claras y transparentes en la clasificación de las formas de los OVNIs (shape).
 
-**Random Forest**: Se implementa el modelo de Random Forest como algoritmo de ensamblaje 
-supervisado para predecir la forma del OVNI (shape), combinando múltiples árboles de decisión 
-independientes para capturar interacciones no lineales complejas y mitigar el riesgo de sobreajuste 
-(overfitting) a partir de las variables temporales, geográficas y de duración.
-
-**K-Nearest Neighbors (KNN)**:  Se puede implementar el modelo de K-Nearest Neighbors (KNN) 
-como clasificador basado en distancias para predecir la forma del OVNI (shape), asignando cada 
-categoría según la clase mayoritaria de sus instancias más cercanas en el espacio vectorial de 
-características.
+**K-Nearest Neighbors (KNN)**:  Se probó el modelo de K-Nearest Neighbors (KNN) 
+como clasificador basado en distancias para predecir la forma del OVNI (shape)
 
 ---
 
@@ -178,6 +162,13 @@ Las siguientes variables del dataset presentan niveles de cardinalidad controlad
 | `is_weekend` | Es una variable binaria intrínseca ($0/1$ o `True/False`). | No requiere transformación adicionales. | 
 
 ---
+# MODELO APLICADO:
+
+**Random Forest**: Se implementa el modelo de Random Forest como algoritmo, combinando múltiples árboles de decisión 
+independientes para capturar interacciones no lineales complejas y mitigar el riesgo de sobreajuste 
+(overfitting) a partir de las variables temporales, geográficas y de duración.
+
+---
 
 ## Conclusiones Generales
 
@@ -200,8 +191,7 @@ Estas decisiones permitieron construir un conjunto de datos más adecuado para e
 
 Se observó que el tratamiento del desbalance de clases influye significativamente en los resultados.
 
-El modelo Random Forest con balanceo permitió mejorar la capacidad de reconocer algunas categorías minoritarias, aunque esto también produjo un aumento de las falsas predicciones.
-Por ejemplo, la categoría Fireball (Bola de fuego) alcanzó un Recall del 53 %, pero una Precision del 18 %. Esto significa que el modelo consiguió recuperar una proporción mayor de los registros reales de esa categoría, aunque también clasificó incorrectamente numerosos registros como Fireball.
+El modelo Random Forest con balanceo permitió mejorar la capacidad de reconocer algunas categorías minoritarias, aunque esto también produjo un aumento de las falsas predicciones. Por ejemplo, la categoría Fireball (Bola de fuego) alcanzó un Recall del 53 %, pero una Precision del 18 %. Esto significa que el modelo consiguió recuperar una proporción mayor de los registros reales de esa categoría, aunque también clasificó incorrectamente numerosos registros como Fireball.
 
 Por lo tanto, los resultados deben interpretarse considerando conjuntamente Precision, Recall y F1-score, y no únicamente la exactitud general (*Accuracy*).
 
