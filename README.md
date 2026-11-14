@@ -30,8 +30,6 @@
 
 Este proyecto que tiene como objetivo desarrollar un modelo de aprendizaje automático supervisado capáz de clasificar los reportes de avistamientos de UFO/UAP (OVNIS, objetos voladores no identificados) según la forma con la que los testigos describieron dichos objetos observados.
 
-[⬆️ Volver al índice](#Índice)
-
 ---
 
 ## Relevancia del problema
@@ -40,20 +38,15 @@ Este proyecto utiliza el conjunto de datos **NUFORC UFO Sightings**, una recopil
 El modelo intentará predecir la categoría de forma de un reporte OVNI, pero cabe aclarar que no anticipará cuándo o dónde ocurrirá un avistamiento.
 El modelo NO busca determinar la existencia de vida extraterrestre ni comprobar la naturaleza de los objetos observados.
 
-[⬆️ Volver al índice](#Índice)
-
 ### Pregunta de Investigación e Hipótesis
 
 ¿Es posible predecir con precisión la forma de un objeto volador no identificado a partir de las 
 características temporales, geográficas, de duración de los avistamientos?
 
-[⬆️ Volver al índice](#Índice)
 
 ## Tipo de problema
 
 Clasificación supervisada multiclase
-
-[⬆️ Volver al índice](#Índice)
 
 ## Objetivo General
 
@@ -117,38 +110,54 @@ El repositorio se encuentra organizado siguiendo los principios de la plantilla 
 </a>
 
 ```
-│   Readme.md
-│   requirements.txt
-│
-├───data
-│   ├───interim
-│   │       Datos intermedios.txt
-│   │
-│   ├───processed
-│   │       A confirmar.txt
-│   │       dataset_procesado.csv
-│   │
-│   └───raw
-│           clean_ufo_data.csv
-│
-├───docs
-│       01_Objetivos_y_Alcance_del_Proyecto.md
-│       02_Analisis_exploratorio.md
-│
-├───models
-│       Pendiente.txt
-│
-├───notebooks
-│   ├───01 - Preprocesamiento y Escalado
-│   │       01_Limpieza_y_Preprocesamiento_.ipynb
-│   │       02_Datos_Limpios_y_Preparados_.ipynb
-│   │
-│   └───02 - Modelos
-│           Pendiente.txt
-│
-└───reports
-    └───figures
-            Pendiente.txt
+|   Readme.md
+|
++---data
+|   +---interim
+|   |       dataset_procesado-tests.csv
+|   |       Datos intermedios.txt
+|   |
+|   +---processed
+|   |       dataset_procesado.csv
+|   |
+|   \---raw
+|           clean_ufo_data.csv
+|           Dataset_crudo_from_Kaggle.com.txt
+|
++---docs
+|       01_Objetivos_y_Alcance_del_Proyecto.md
+|       02_Analisis_exploratorio.md
+|       Readme.md
+|
++---models
+|       Prueba_y_entrenamiento_con_otros_Modelos.ipynb
+|       Readme.md
+|
++---notebooks
+|   +---01 - Preprocesamiento y Escalado
+|   |       01_Limpieza_y_Preprocesamiento.ipynb
+|   |       02_Datos_Limpios_y_Preparados.ipynb
+|   |
+|   \---02 - Modelos
+|           01_Entrenamiento_del_Modelo.ipynb
+|
+\---reports
+    \---figures
+            01 - BANNER.png
+            02 - formas - shape.jpg
+            03-UFO-UAP-OVNIS.jpg
+            04-DISTRIBUCION_shape_Y_shape_grouped.jpg
+            05-EEUU-REGIONES.jpg
+            06-DISTRIBUCIÓN_REGIONES_EEUU.jpg
+            07-DISTRIBUCIONES_TEMPORALES.jpg
+            08-AVISTAMIENTOS_POR_AÑO.jpg
+            09-MATRIZ_CONFUSION_RANDOM_FORESTjpg.jpg
+            10-RANDOM_FOREST_ESQUEMA.jpg
+            11-CARACTERISTICAS_EN_RANDOM_FOREST.jpg
+            12-DISTRIBUCIÓN_REAL_Y_PREDICHA_RANDOM_FOREST.jpg
+            13-METRICAS_POR_CATEGORIAS_RANDOM_FORESTjpg.jpg
+            14-CURVAS_ROC_RANDOM_FOREST.jpg
+            15-HEATMAP_AVISTAMIENTOS POR DIA Y HORA.jpg
 
 ```
 Tecnologías Utilizadas
@@ -168,7 +177,7 @@ Tecnologías Utilizadas
 
 ## 9. Notebooks del Proyecto
 
-- 📘 [`01_Limpieza_y_Preprocesamiento.ipynb`](notebooks/01%20-%20Preprocesamiento%20y%20Escalado/01_Limpieza_y_Preprocesamiento_.ipynb)
+- 📘 [`01_Limpieza_y_Preprocesamiento.ipynb`](notebooks/01%20-%20Preprocesamiento%20y%20Escalado/01_Limpieza_y_Preprocesamiento.ipynb)
 
 - 📘 [`02_Datos_Limpios_y_Preparados.ipynb`](notebooks/01%20-%20Preprocesamiento%20y%20Escalado/02_Datos_Limpios_y_Preparados.ipynb)
 
