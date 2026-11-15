@@ -168,7 +168,8 @@ PROYECTO_APRENDIZAJE_AUTOMATICO/
         ├── 12-DISTRIBUCIÓN_REAL_Y_PREDICHA_RANDOM_FOREST.jpg
         ├── 13-METRICAS_POR_CATEGORIAS_RANDOM_FORESTjpg.jpg
         ├── 14-CURVAS_ROC_RANDOM_FOREST.jpg
-        └── 15-HEATMAP_AVISTAMIENTOS POR DIA Y HORA.jpg
+        ├── 15-HEATMAP_AVISTAMIENTOS POR DIA Y HORA.jpg
+        └── 16-VIDEO-AA-Tuñon_2026.MP4
 ```
 Tecnologías Utilizadas
 
@@ -208,7 +209,7 @@ Tecnologías Utilizadas
 
 Podés acceder al video de presentación en el siguiente enlace de Google Drive:
 
-[🎥 Ver video en Google Drive](https://drive.goo.....)
+[🎥 Ver video en Google Drive](https://drive.google.com/file/d/13zCq--FuVMU5lbIefIWqIfBtX82gmIk8/view?usp=sharing)
 
 > Este video resume el objetivo, metodología y resultados del proyecto de clasificación de la forma reportada en avistamientos de OVNIS en Estados Unidos mediante Aprendizaje Automático.
 
