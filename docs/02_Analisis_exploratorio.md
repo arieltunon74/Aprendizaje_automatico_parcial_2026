@@ -504,6 +504,18 @@ En esta etapa se crea una nueva variable categórica que permite clasificar los 
 
 Con cuatro clases —`Late Night`, `Morning`, `Afternoon` y `Evening/Night`— para analizar la distribución horaria de los avistamientos y explorar su relación con otras variables del dataset.
 
+## Mapa de Calor: Avistamientos por Día y Hora
+
+El mapa de calor cruza los días de la semana con las 24 horas del día para identificar los momentos exactos de mayor concentración de reportes:
+
+Epicentro absoluto (Sábado a las 21:00): La zona más oscura del gráfico (superando los 2,000–2,300 registros) se concentra exclusivamente a las 21:00 horas del sábado.
+
+Franja horaria crítica nocturna: Entre las 20:00 y las 23:00 horas se registra la mayor intensidad de toda la semana, con una concentración notablemente densa durante las noches de Viernes, Sábado y Domingo.
+
+Horas de menor actividad: Las celdas más claras (cercanas a 0–500 registros) predominan de forma constante entre las 08:00 y las 16:00 horas en todos los días de la semana, reflejando una baja actividad diurna.
+
+Patrón secundario (Medianoche): Se observa un leve incremento de reportes a las 00:00 horas en comparación con el resto de la madrugada y las primeras horas de la mañana.
+
 ![Heatmap de avistamientos por día y hora](../reports/figures/15-HEATMAP_AVISTAMIENTOS%20POR%20DIA%20Y%20HORA.jpg)
 
 ## JUSTIFICACIÓN
@@ -727,13 +739,57 @@ Se realizaron pruebas con otros diferentes modelos de aprendizaje automático su
 
 El modelo elegido fue Random Forest, fue seleccionado por presentar el mejor desempeño relativo, no porque necesariamente sea el mejor algoritmo para cualquier problema de clasificación.
 
+### Resultados de la Matriz de Confusión
+
 ![Matriz de confusión Random Forest](../reports/figures/09-MATRIZ_CONFUSION_RANDOM_FORESTjpg.jpg)
+
+
+| Categoría | Predicciones Correctas (Aciertos) | Observaciones y Comportamiento |
+| :--- | :---: | :--- |
+| **Fireball** | 755 | Categoría con mejor reconocimiento del modelo. |
+| **Triangle** | 516 | Sólido rendimiento en la clasificación estructural. |
+| **Disk** | 222 | Desempeño moderado. |
+| **Sphere** | 80 | Dificultades críticas de reconocimiento. |
+| **Other / Light** | - | Elevada tasa de confusión cruzada (especialmente con Fireball y Triangle). |
+
+El modelo encuentra dificultades para distinguir determinadas formas a partir de las características disponibles.
+
+---
+
+### Resultados de las métricas por categoría
+
+A partir de los valores de tu matriz de confusión, se pueden calcular las siguientes métricas:
+
+*Resultados calculados sobre 15.939 registros de prueba.*
+
+| Categoría | Precision | Recall | F1-score |
+| :--- | :---: | :---: | :---: |
+| **Circle** | 15,45 % | 12,00 % | 14,00 % |
+| **Disk** | 12,00 % | 25,00 % | 16,00 % |
+| **Fireball** | 18,00 % | 53,00 % | 27,00 % |
+| **Light** | 31,00 % | 22,00 % | 25,00 % |
+| **Other** | 40,00 % | 15,00 % | 22,00 % |
+| **Sphere** | 10,00 % | 7,00 % | 8,00 % |
+| **Triangle** | 17,00 % | 30,00 % | 21,00 % |
+
+Estos resultados indican que el modelo presenta problemas para distinguir determinadas categorías, posiblemente relacionados con la similitud entre las características de los reportes, la heterogeneidad de los registros y el desequilibrio en la distribución de las clases.
+
+Fireball obtuvo el mayor recall (53 %), aunque con una precisión del 18 %. Por su parte, Other alcanzó la mayor precisión (40 %), pero un recall del 15 %. Sphere presentó los menores valores de recall y F1-score de la tabla. Estos resultados muestran que ninguna categoría alcanzó simultáneamente valores elevados de precisión y sensibilidad.
+
+Desde una perspectiva académica y de investigación, este análisis permite evaluar las capacidades y limitaciones de los algoritmos de aprendizaje automático aplicados al estudio de reportes históricos de fenómenos aéreos no identificados.
+
+Se concluye que Random Forest con balanceo de clases es un punto de referencia experimental para futuras investigaciones, sin que los resultados obtenidos permitan considerarlo una solución predictiva satisfactoria para el objetivo planteado. Hasta aquí llega el alcance del proyecto.
 
 ![Esquema Random Forest](../reports/figures/10-RANDOM_FOREST_ESQUEMA.jpg)
 
+
 ![Características de Random Forest](../reports/figures/11-CARACTERISTICAS_EN_RANDOM_FOREST.jpg)
 
+### Visualización de la distribución de valores reales y predichos
+
 ![Distribución real y predicha Random Forest](../reports/figures/12-DISTRIBUCI%C3%93N_REAL_Y_PREDICHA_RANDOM_FOREST.jpg)
+
+El gráfico de barras compara la cantidad de registros reales (en azul) frente a la cantidad de registros predichos por el modelo de Random Forest (en naranja) para cada una de las categorías de la variable objetivo.
 
 ![Métricas por categorías Random Forest](../reports/figures/13-METRICAS_POR_CATEGORIAS_RANDOM_FORESTjpg.jpg)
 
