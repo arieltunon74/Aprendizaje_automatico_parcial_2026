@@ -209,7 +209,7 @@ Tecnologías Utilizadas
 
 Podés acceder al video de presentación en el siguiente enlace de Google Drive:
 
-[🎥 Ver video en Google Drive](https://drive.google.com/file/d/13zCq--FuVMU5lbIefIWqIfBtX82gmIk8/view?usp=sharing)
+[🎥 Ver video en Google Drive](https://drive.google.com/file/d/1jQ-CcBoU7KMtPQ9YtG7CVWRvDghnVvMZ/view?usp=sharing)
 
 > Este video resume el objetivo, metodología y resultados del proyecto de clasificación de la forma reportada en avistamientos de OVNIS en Estados Unidos mediante Aprendizaje Automático.
 
