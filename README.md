@@ -6,9 +6,9 @@
 
 **Modelo de aprendizaje automático supervisado orientado a clasificar las formas reportadas en avistamientos de OVNIs mediante técnicas de clasificación multiclase.**
 
-<br/>
+
 ![Status](https://img.shields.io/badge/estado-completado-success?style=flat-square)
-<br/>
+
 
 ### Autor: Ariel Tuñon
 ### Politécnico Superior Malvinas Argentinas
@@ -68,7 +68,7 @@ Aplicar técnicas de Aprendizaje Automático supervisado, mediante un modelo de 
 
 [⬆️ Volver al índice](#Índice)
 
-S
+
 ### Objetivos específicos
 
 Desarrollar un modelos de aprendizaje automático que permita predecir la forma reportada por los testigos en dichos avistamientos, a partir de las características disponibles en el conjunto de datos.
@@ -117,7 +117,7 @@ La información geográfica también se detalla, con campos que indican la ciuda
 
 ---
 
-# Organización del Proyecto
+## Organización del Proyecto
 
 El repositorio se encuentra organizado siguiendo los principios de la plantilla Cookiecutter Data Science.
 
@@ -180,7 +180,6 @@ PROYECTO_APRENDIZAJE_AUTOMATICO/
 ```
 ### Tecnologías Utilizadas
 
-<br/>
 ![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
 ![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
@@ -190,9 +189,9 @@ PROYECTO_APRENDIZAJE_AUTOMATICO/
 ![Jupyter Notebook](https://img.shields.io/badge/Jupyter_Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
-<br/>
 
-[⬆️ Volver al índice](#Índice)
+
+
 ---
 
 ## 9. Notebooks del Proyecto
@@ -210,8 +209,6 @@ PROYECTO_APRENDIZAJE_AUTOMATICO/
 
 - 📄 [`Análisis exploratorio`](docs/02_Analisis_exploratorio.md)
 
-
-[⬆️ Volver al índice](#Índice)
 
 
 ## 11. Video Presentacion del Proyecto
