@@ -29,9 +29,10 @@
 - [6. Fuente de los Datos](#fuente-de-los-datos)
  - [6.1. Acerca de la fuente de información](#acerca-de-la-fuente-de-información)
 - [7. Organización del proyecto](#organización-del-proyecto)
-- 📘 [08. Notebooks del Proyecto](#9-notebooks-del-proyecto)
-- 📄 [09. Informes Tecnicos del Proyecto](#10-informes-tecnicos-del-proyecto)
-- 🎥 [10. Video Presentacion del Proyecto](#11-video-presentacion-del-proyecto)
+- 📘 [08. Notebooks del Proyecto](#8-notebooks-del-proyecto)
+- 📄 [09. Informes Tecnicos del Proyecto](#9-informes-tecnicos-del-proyecto)
+- 🎥 [10. Video Presentacion del Proyecto](10.-Video-Presentacion-del-Proyecto)
+- [11. Abstract (Resumen)](#11-resumen-abstract)
 
 ---
 
@@ -194,7 +195,7 @@ PROYECTO_APRENDIZAJE_AUTOMATICO/
 
 ---
 
-## 9. Notebooks del Proyecto
+## 8. Notebooks del Proyecto
 
 - 📘 [`01_Limpieza_y_Preprocesamiento.ipynb`](notebooks/01%20-%20Preprocesamiento%20y%20Escalado/01_Limpieza_y_Preprocesamiento.ipynb)
 
@@ -203,7 +204,7 @@ PROYECTO_APRENDIZAJE_AUTOMATICO/
 - 📘 [`01_Entrenamiento_del_Modelo.ipynb`](notebooks/02%20-%20Modelos/01_Entrenamiento_del_Modelo.ipynb)
 
 
-## 10. Informes Tecnicos del Proyecto
+## 9. Informes Tecnicos del Proyecto
 
 - 📄 [`Objetivos y alcance del proyecto`](docs/01_Objetivos_y_Alcance_del_Proyecto.md)
 
@@ -211,7 +212,7 @@ PROYECTO_APRENDIZAJE_AUTOMATICO/
 
 
 
-## 11. Video Presentacion del Proyecto
+## 10. Video Presentacion del Proyecto
 
 Podés acceder al video de presentación en el siguiente enlace de Google Drive:
 
@@ -220,4 +221,32 @@ Podés acceder al video de presentación en el siguiente enlace de Google Drive:
 > Este video resume el objetivo, metodología y resultados del proyecto de clasificación de la forma reportada en avistamientos de OVNIS en Estados Unidos mediante Aprendizaje Automático.
 
 
+## 11. RESUMEN (Abstract)
+
+# Abstract
+
+This project focuses on the analysis and classification of Unidentified Flying Object (UFO) sighting reports using supervised machine learning techniques. The dataset, obtained from the National UFO Reporting Center (NUFORC), underwent a data preprocessing and exploratory data analysis (EDA) process to identify patterns, examine data quality, and understand the distribution of reported sightings.
+
+The main objective was to develop a multiclass classification model capable of predicting the reported shape category of UFO sightings based on structured features, including temporal, geographical, and duration-related variables.
+
+Several supervised machine learning algorithms were explored and evaluated, with Random Forest selected as the main classification model. Model performance was assessed using a confusion matrix and classification metrics such as accuracy, precision, recall, and F1-score, with particular attention to the challenges associated with class imbalance.
+
+The results showed limited predictive performance, highlighting the difficulty of accurately classifying reported shapes using only structured information. Nevertheless, the model identified certain patterns and demonstrated the feasibility of applying machine learning techniques to organize and classify UFO sighting reports automatically.
+
+The project concludes that, although predictive accuracy remains limited, the dataset provides valuable descriptive insights and offers opportunities for further research. Future improvements could include incorporating Natural Language Processing (NLP) techniques to analyze witness descriptions and exploring additional external data sources to enrich the predictive features.
+
+
+# Resumen (Abstract)
+
+Este proyecto se centra en el análisis y la clasificación de reportes de avistamientos de Objetos Voladores No Identificados (OVNIs) mediante técnicas de aprendizaje automático supervisado. El conjunto de datos, obtenido del National UFO Reporting Center (NUFORC), fue sometido a un proceso de limpieza y preprocesamiento de datos, así como a un análisis exploratorio (EDA), con el propósito de identificar patrones, examinar la calidad de los datos y comprender la distribución de los avistamientos reportados.
+
+El objetivo principal fue desarrollar un modelo de clasificación multiclase capaz de predecir la categoría de forma reportada en los avistamientos de OVNIs, a partir de características estructuradas que incluyen variables temporales, geográficas y relacionadas con la duración de los avistamientos.
+
+Se exploraron y evaluaron diferentes algoritmos de aprendizaje automático supervisado, seleccionando Random Forest como modelo principal de clasificación. Su rendimiento se evaluó mediante una matriz de confusión y métricas de clasificación como exactitud (Accuracy), precisión (Precision), exhaustividad (Recall) y puntuación F1 (F1-score), prestando especial atención a las dificultades asociadas al desbalance de clases.
+
+Los resultados mostraron un rendimiento predictivo limitado, evidenciando la dificultad de clasificar correctamente las formas reportadas utilizando únicamente información estructurada. No obstante, el modelo logró identificar ciertos patrones y demostró la viabilidad de aplicar técnicas de aprendizaje automático para organizar y clasificar automáticamente los reportes de avistamientos de OVNIs.
+
+Se concluye que, aunque la capacidad predictiva del modelo continúa siendo limitada, el conjunto de datos proporciona información descriptiva valiosa y ofrece oportunidades para futuras investigaciones. Entre las posibles mejoras se contempla la incorporación de técnicas de Procesamiento del Lenguaje Natural (NLP) para analizar las descripciones de los testigos, así como la integración de fuentes de datos externas que permitan enriquecer las características utilizadas para la predicción.
+
+---
 [⬆️ Volver al índice](#Índice)
