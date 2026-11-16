@@ -172,8 +172,6 @@ reemplazos_shape = {
 ```
 ---
 
-# DICCIONARIO DE DATOS
-
 ## 1. Descripción de las variables
 
 Traducciones al español y la terminología utilizada en el proyecto de Aprendizaje Automático.
@@ -196,7 +194,7 @@ Traducciones al español y la terminología utilizada en el proyecto de Aprendiz
 La variable `shape` es la forma aparente del objeto descrita por el testigo. 
 Es una variable categórica nominal que constituye el objetivo de la clasificación supervisada multiclase.
 
-### Otras categorías de valores posibles de `shape` y en la **Variable objeetivo (`shape_grouped`):** (Forma del OVNI - UFO - UAP)
+### Otras categorías de valores posibles de `shape` y en la **Variable objetivo (`shape_grouped`):** (Forma del OVNI - UFO - UAP)
 
 ![Avistamientos UFO-UAP-OVNIS](../reports/figures/03-UFO-UAP-OVNIS.jpg)
 
@@ -329,8 +327,7 @@ Cada fila representa un avistamiento informado, acompañado de múltiples atribu
 | Tipo de problema               | Clasificación Multiclase  | Aprendizaje Supervisado | 
 
 
-# Metodologias y decisiones adoptadas durante la limpieza del dataset:
-
+## Metodologias y decisiones adoptadas durante la limpieza del dataset:
 
 ### DISTRIBUCIÓN DE LAS FORMAS DE OVNIS (shape_grouped) - CATEGORÍA DE FORMAS AGRUPADA - VARIABLE OBJETIVO DEL MODELO DE APRENDIZAJE.
 
@@ -372,7 +369,7 @@ La transformación de la variable objetivo original `shape` en un conjunto reduc
 
  ---
 
- ## ANÁLISIS DE LAS DISTRIBUCIONES TEMPORALES DE LOS AVISTAMIENTOS OVNI
+ ## Análisis de las distribuciones temporales de los avistamientos OVNI
 
 * **Estacionalidad (`north_season`):** Permite identificar en qué épocas del año (verano, invierno, etc.) ocurren más reportes. Se observa una concentración superior de avistamientos durante los meses de verano y otoño, lo cual suele correlacionarse con mayores actividades al aire libre, mejores condiciones climáticas para la observación nocturna y períodos vacacionales de los testigos.
 
@@ -465,7 +462,7 @@ Para normalizar los valores se establecen los siguientes criterios:
 
 **Resultado:** se obtiene la columna `duration_seconds`, con valores numéricos homogéneos expresados en segundos, facilitando su utilización en el análisis exploratorio y los modelos de aprendizaje automático.
 
-### CREACIÓN Y CLASIFICACIÓN DE LOS MESES SEGÚN LAS CUATRO ESTACIONES DEL AÑO (hemisferio norte)
+### Creación y clasificación de los meses según las cuatro estaciones del año (hemisferio norte)
 
 A partir de la fecha de cada avistamiento, se identifica el mes de observación y se lo clasifica en una de las cuatro estaciones: verano, otoño, invierno o primavera.
 
@@ -483,7 +480,7 @@ Esta transformación permite incorporar información estacional al dataset y exp
 ### Procedimiento: Guardar el resultado en la nueva columna `north_season`.
 
 
-# CREACIÓN DE UNA COLUMNA PARA CLASIFICAR LOS AVISTAMIENTOS POR FRANJA HORARIA DEL DÍA
+## Creación de una columna para clasificar los avistamientos por franja horaria del día
 
 Agrupa la hora del avistamiento en categorías intuitivas (Madrugada, Mañana, Tarde, Noche). Esto es excelente para modelos predictivos porque los avistamientos de OVNIs suelen tener patrones muy marcados según la luz solar.
 
@@ -516,7 +513,7 @@ Patrón secundario (Medianoche): Se observa un leve incremento de reportes a las
 
 ![Heatmap de avistamientos por día y hora](../reports/figures/15-HEATMAP_AVISTAMIENTOS%20POR%20DIA%20Y%20HORA.jpg)
 
-## JUSTIFICACIÓN
+### Justificación
 
 El objetivo de esta transformación para crear la columna `time_of_day` es incorporar información sobre el momento del día en que se producen los avistamientos, con el propósito de:
 
@@ -592,7 +589,7 @@ En esta etapa se analiza la variable geográfica `state`, que identifica el esta
 El objetivo es organizar y estandarizar la información geográfica para facilitar el análisis de la distribución espacial de los reportes e identificar posibles diferencias entre las regiones representadas en el dataset.
 
 
-## JUSTIFICACIÓN
+## Justificación
 
 Organización geográfica: unificar y normalizar los nombres de los estados para evitar diferencias de escritura y categorías duplicadas.
 
@@ -603,7 +600,6 @@ Identificación de patrones regionales: analizar si existen diferencias en las f
 Información predictiva: incorporar la ubicación geográfica como atributo de entrada para que el modelo de aprendizaje automático pueda evaluar su posible utilidad en la clasificación de los avistamientos.
 
 ---
-
 
 CONVERSIÓN DE LA VARIABLE `month` A CATEGÓRICA — MESES EN ESPAÑOL
 
@@ -629,13 +625,13 @@ En esta etapa se transforma la variable `month`, que representa el mes de cada a
 
 Ordenados cronológicamente y preparados para analizar la distribución mensual de los avistamientos OVNI.
 
-## JUSTIFICACIÓN:
+## Justificación
 
 En esta etapa se transforman las variables temporales month y day_of_week, originalmente representadas mediante valores numéricos, en variables categóricas con los nombres de los meses y días de la semana en español para facilitar la interpretación de la información temporal y permitir un análisis más comprensible de la distribución de los avistamientos OVNI.
 
 ---
 
-## ELIMINACIÓN DE REGISTROS CON VALOR `unknown` EN LAS COLUMNAS `state`, `shape` Y `shape_grouped`
+## Eliminación de registros con valor `unknown` (desconocido) en las columnas `state`, `shape` y `shape_grouped`
 
 En esta etapa se identifican y eliminan los registros que contienen el valor `unknown` en las columnas `state`, `shape` y `shape_grouped`.
 
@@ -657,7 +653,7 @@ Mejorar la consistencia del conjunto de datos, reducir categorías sin informaci
 
 ---
 
-## FILTRADO GEOGRÁFICO — ELIMINACIÓN DE REGISTROS DE CANADÁ Y OTRAS UBICACIONES
+## Filtrado geográfico — Eliminación de registros de Canadá y otras ubicaciones en el mundo.
 
 En esta etapa se eliminan los registros correspondientes a estados y provincias de Canadá, así como las categorías agrupadas bajo `Other`, que representan ubicaciones fuera del alcance geográfico definido para el proyecto.
 
@@ -705,11 +701,11 @@ Se eliminan únicamente las filas donde ´posted_date´ presenta valores nulos o
 
 ---
 
-## ELIMINACIÓN DE COLUMNAS `id`, `summary` Y `details_url`
+## Eliminación de las columnas `id`, `summary` y `details_url`
 
 En esta etapa se decide eliminar completamente las columnas `id`, `summary` y `details_url`, debido a que no aportan información predictiva relevante para los modelos de aprendizaje automático seleccionados en este proyecto.
 
-### JUSTIFICACIÓN
+### Justificación
 
 La eliminación se fundamenta en los siguientes criterios:
 
@@ -725,13 +721,13 @@ Reducir la cantidad de columnas innecesarias, evitar incorporar información que
 
 ---
 
-## NORMALIZACION DE HORAS Y FORMATOS 00:00 ENTRE `duration` Y `duration_seconds`
+## Normalizacion de horas y formatos 00:00 entre `duration` y `duration_seconds`
 
 En esta etapa se revisan y normalizan los registros de la columna duration que presentan formatos horarios como 00:00, con el propósito de interpretar correctamente las duraciones informadas y convertirlas a valores numéricos expresados en segundos en la columna duration_seconds.
 
 ---
 
-## MODELO IMPLEMENTADO: RANDOM FOREST
+# MODELO IMPLEMENTADO: RANDOM FOREST
 
 Se realizaron pruebas con otros diferentes modelos de aprendizaje automático supervisado como Regresión Logística Multinomial, Arboles de decisión y KNN; tanto para las 27 variables de shape como para las 7 de shape_grouped, pero no se obtuvieron resultados significativos, es decir que estos modelos probados presentaron un desempeño inferior según las métricas de evaluación.
 

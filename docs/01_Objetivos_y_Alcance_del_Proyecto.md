@@ -62,7 +62,7 @@ Las fechas están representadas como texto y podrían convertirse a un tipo temp
 
 ---
 
-## ESTADO FINAL DEL DATASET DESPUÉS DEL PREPROCESAMIENTO
+## Estado final del dataset después del preprocesamiento
 
 Resultado del proceso de limpieza, transformación y preparación de los datos, con el objetivo de obtener un conjunto de datos consistente y adecuado para el desarrollo de modelos de Aprendizaje Automático.
 
@@ -114,13 +114,13 @@ como clasificador basado en distancias para predecir la forma del OVNI (shape)
 
 ---
 
-# Codificación de Variables Categóricas (Dataset procesado NUFORC)
+## Codificación de Variables Categóricas (Dataset procesado NUFORC)
 
 **En base al dataset original:** NUFORC UFO Sightings - Data scraped from the National UFO reporting center – By Thaddeus Segura - (DbCL) v1.0
 
 Una técnica que se intentará en los modelos es **One Hot Encoding (OHE)** consiste en convertir variables categóricas en vectores binarios ($0$ y $1$). Su uso óptimo requiere que las variables tengan **baja a moderada cardinalidad** (pocos valores únicos) para evitar el aumento excesivo de dimensiones (*curse of dimensionality*).
 
-## 2. Variables a realizar One Hot Encoding en el Notebook
+## Variables a realizar One Hot Encoding en el Notebook
 
 Las siguientes variables del dataset presentan niveles de cardinalidad controlados y estructura categórica discreta ideal para ser codificadas mediante OHE:
 
@@ -136,7 +136,7 @@ Las siguientes variables del dataset presentan niveles de cardinalidad controlad
 
 > **Nota sobre `state`:**: se intentará priorizar `state_grouped` o `us_region`.
 
-## 3. Variables EXCLUIDAS de One Hot Encoding
+## Variables EXCLUIDAS de One Hot Encoding
 
 | Variable | Motivo de Exclusión | Técnica Alternativa Recomendada | 
 | ----- | ----- | ----- | 
@@ -150,7 +150,7 @@ Las siguientes variables del dataset presentan niveles de cardinalidad controlad
 | `duration_category_detailed` | Duración detallada | Rangos cualitativos ampliados pero disjuntos y limitados en número. | 
 
 ---
-# MODELO APLICADO:
+## Modelo aplicado:
 
 **Random Forest**: Se implementa el modelo de Random Forest como algoritmo, combinando múltiples árboles de decisión 
 independientes para capturar interacciones no lineales complejas y mitigar el riesgo de sobreajuste 
