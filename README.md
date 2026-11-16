@@ -31,7 +31,7 @@
 - [7. Organización del proyecto](#organización-del-proyecto)
 - 📘 [08. Notebooks del Proyecto](#8-notebooks-del-proyecto)
 - 📄 [09. Informes Tecnicos del Proyecto](#9-informes-tecnicos-del-proyecto)
-- 🎥 [10. Video Presentacion del Proyecto](10.-Video-Presentacion-del-Proyecto)
+- 🎥 [10. Video Presentacion del Proyecto](#10-video-presentacion-del-proyecto)
 - [11. Abstract (Resumen)](#11-resumen-abstract)
 
 ---
