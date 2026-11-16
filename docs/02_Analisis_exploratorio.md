@@ -230,19 +230,17 @@ Es una variable categórica nominal que constituye el objetivo de la clasificaci
 
 ## 3. Glosario de términos
 
-```
-| Término      | Significado | Descripción |
-|--------------|-------------|-------------|
-| **Sighting** | Avistamiento| Observación visual de un objeto o fenómeno, generalmente realizada por uno o varios testigos. |
-| **UFO**      | Unidentified Flying Object (Objeto Volador No Identificado - OVNI) | Término utilizado para describir un objeto observado en el cielo cuya identidad no ha podido determinarse. |
-| **UAP**      | Unidentified Anomalous Phenomena (Fenómenos Anómalos No Identificados) | Término más amplio que UFO, utilizado para referirse a fenómenos anómalos que no han podido identificarse en diferentes entornos. |
-```
+| Término | Significado | Descripción |
+|---|---|---|
+| **Sighting** | Avistamiento | Observación visual de un objeto o fenómeno, generalmente realizada por uno o varios testigos. |
+| **UFO** | Unidentified Flying Object (Objeto Volador No Identificado - OVNI) | Término utilizado para describir un objeto observado en el cielo cuya identidad no ha podido determinarse. |
+| **UAP** | Unidentified Anomalous Phenomena (Fenómenos Anómalos No Identificados) | Término más amplio que UFO, utilizado para referirse a fenómenos anómalos que no han podido identificarse en diferentes entornos. |
 
 ## 4. Consideraciones sobre las variables
 
 - **Variable (`shape`):** Es la categoría que se toma en base para el modelo de aprendizaje automático que luego con un sub-grupo intentará predecir.
 
-- **Variable (`shape_grouped`):** Es la variable objetivo.
+- **Variable (`shape_grouped`):** Es la variable objetivo del modelo.
 
 - **Variables predictoras:** podrán seleccionarse a partir de las características temporales, geográficas y de duración de los avistamientos.
 
@@ -739,6 +737,8 @@ Se realizaron pruebas con otros diferentes modelos de aprendizaje automático su
 
 El modelo elegido fue Random Forest, fue seleccionado por presentar el mejor desempeño relativo, no porque necesariamente sea el mejor algoritmo para cualquier problema de clasificación.
 
+El modelo alcanzó una accuracy de 21,1 % y un F1 macro de 0,19 sobre siete clases, un desempeño comparable al de una predicción aleatoria. Observando las métricas obtenidas, el “buen” desempeño de Fireball (recall 53 %) podría estar relacionado con el balanceo de clases, su precisión es de sólo 18 %, o sea que el modelo identifica una parte de los casos reales, pero también clasifica incorrectamente como Fireball muchos registros de otras categorías. Lo mismo ocurre con las formas Disc y Triangle. El rendimiento limitado no se debe principalmente a la elección del algoritmo, sino a la baja relación entre las variables predictoras y la variable objetivo.
+
 ### Resultados de la Matriz de Confusión
 
 ![Matriz de confusión Random Forest](../reports/figures/09-MATRIZ_CONFUSION_RANDOM_FORESTjpg.jpg)
@@ -811,9 +811,15 @@ Esta selección rigurosa garantiza que el modelo aprenda a partir de patrones te
 
 ---
 
+## Conclusiones
+
+El rendimiento obtenido indica que todavía existen oportunidades de mejora mediante la experimentación con otros algoritmos y diferentes estrategias de tratamiento de las variables que no implementamos como por ejemplo tomar como variable objetivo 'duration_seconds' como un problema de regresion, también realizar pruebas con modelos de aprendizaje no-supervisados. Otra alternativa que puede quedar como objeto de otra línea de investigación es analizar el texto de los reportes (columna ´summary´ en el dataset original) mediante análisis de texto con modelos NLP (Procesamiento del Lenguaje Natural), que es información importante de estos eventos pero que el modelo actualmente no ve porque no fue considerada dentro del alcance del proyecto; todas estas propuestas quedan delimitadas para otros proyectos en el futuro.
+
+---
+
 
 > **Nota:** los reportes son descripciones aportadas por los 
-> testigos y recopiladas por NUFORC. La categoría `shape` y sahpe_groupd reflejan la
+> testigos y recopiladas por NUFORC. La categoría `shape` y shape_groupd reflejan la
 > forma reportada; no es una verificación independiente de la
 > naturaleza del objeto observado.
 

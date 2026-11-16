@@ -1,7 +1,9 @@
 
-# Objetivo General
+# Clasificación de la forma reportada en avistamientos de OVNIS en Estados Unidos mediante aprendizaje automático.
 
-**Intentar clasificar la categoría de la forma de un reporte mediante la aplicación de técnicas de Aprendizaje Automático supervisado mediante clasificación multiclase.**
+## Objetivo General
+
+**Aplicar técnicas de Aprendizaje Automático supervisado, mediante un modelo de clasificación multiclase, para intentar identificar la categoría correspondiente a la forma reportada en los registros de avistamientos.**
 
 Se busca identificar patrones y evaluar la capacidad de los modelos de aprendizaje automático para predecir la forma reportada del objeto (shape) según las características disponibles.
 
@@ -25,7 +27,7 @@ Cabe aclarar que no anticipará cuándo o dónde ocurrirá un avistamiento; No i
 
 ---
 
-# Alcance del proyecto
+## Alcance del proyecto
 
 El proyecto se centra en el análisis de datos de avistamientos de objetos voladores no identificados (UFO), utilizando el dataset NUFORC como fuente de información, con el propósito de evaluar la capacidad de distintos algoritmos de Aprendizaje Automático supervisado para clasificar la forma reportada de los objetos.
 
@@ -39,11 +41,13 @@ El modelo NO busca determinar la existencia de vida extraterrestre ni comprobar 
 
 ## Tipo de problema
 
+
 **Clasificación supervisada multiclase**
+
 
 ## Problema planteado para resolver con un modelo de aprendizaje automático supervisado
 
-¿Es posible clasificar los reportes de avistamientos de objetos voladores no identificados (UFO - OVNI - UAP) según la forma descrita por los testigos, utilizando sus características temporales, geográficas y de duración?
+**¿Es posible clasificar los reportes de avistamientos de objetos voladores no identificados (UFO - OVNI - UAP) según la forma descrita por los testigos, utilizando sus características temporales, geográficas y de duración?**
 
 ---
 
@@ -55,24 +59,6 @@ Se utilizarán como variables predictoras todas las variables disponibles en el 
 
 `posted_date` se conservará inicialmente para evaluar su posible utilidad en el desarrollo del modelo, es decir que su inclusión como variable predictora dependerá de los resultados del análisis exploratorio y de su relevancia para el objetivo de clasificación.
 Las fechas están representadas como texto y podrían convertirse a un tipo temporal.
-
----
-
-## Medidas de prevención de dataleak - Justificación de la elección de las variables
-
-En el proyecto de clasificación de formas de OVNIs, las variables excluidas para evitar la fuga de datos (data leakage) y el sobreajuste incluyen principalmente las siguientes:
-
-La variable original `shape`: Fue descartada por tratarse de la fuente directa de la cual se derivó la variable objetivo (`shape_grouped`), lo que constituiría una fuga directa de la etiqueta a predecir.
-
-Fechas de publicación posteriores (`posted_date`, `posted_year`, `posted_month`, `posted_dayofweek`): Excluidas porque la fecha en que se reporta o publica un avistamiento en la base de datos ocurre después de este, representando información futura que no estaría disponible en un escenario de predicción real.
-
-Versiones redundantes de duración (duration en formato de texto o variantes previas): Se descartaron para evitar duplicidad, conservando únicamente la variable numérica estandarizada (`duration_seconds`).
-
-Variables de alta cardinalidad específica (`city`): Se omitieron campos como la ciudad exacta para evitar un sobreajuste (overfitting) severo, priorizando en su lugar atributos espaciales y contextuales más amplios como `state_grouped` y `us_region`.
-
-Esta selección rigurosa garantiza que el modelo aprenda a partir de patrones temporales, espaciales y cuantitativos reales (`duration_seconds`, años, estaciones, etc.) y no de indicios directos de la respuesta o información del futuro.
-El entrenamiento (la división de los datos y la definición de la estrategia) ocurrió lógicamente primero, pero operativamente el escalado se ajustó exclusivamente dentro del conjunto de entrenamiento para evitar fugas de datos (data leakage).
-
 
 ---
 
@@ -111,7 +97,7 @@ El proyecto fue desarrollado siguiendo las etapas clásicas de un flujo de traba
 
 # Modelo Utilizado
 
-Random Forest (con balance de clases)
+**Random Forest (con balance de clases)**
 
 ---
 
@@ -134,7 +120,7 @@ como clasificador basado en distancias para predecir la forma del OVNI (shape)
 
 Una técnica que se intentará en los modelos es **One Hot Encoding (OHE)** consiste en convertir variables categóricas en vectores binarios ($0$ y $1$). Su uso óptimo requiere que las variables tengan **baja a moderada cardinalidad** (pocos valores únicos) para evitar el aumento excesivo de dimensiones (*curse of dimensionality*).
 
-## 2. Posibles variables a realizar One Hot Encoding en el Notebook
+## 2. Variables a realizar One Hot Encoding en el Notebook
 
 Las siguientes variables del dataset presentan niveles de cardinalidad controlados y estructura categórica discreta ideal para ser codificadas mediante OHE:
 
@@ -147,9 +133,6 @@ Las siguientes variables del dataset presentan niveles de cardinalidad controlad
 | `month_category` | Temporal / Meses | Categorías mensuales discretas (12 niveles). | 
 | `day_category` | Temporal / Día | Categorías correspondientes al momento o tipo de día. | 
 | `time_of_day` | Temporal / Horaria | Franjas del día (Mañana, Tarde, Noche, Madrugada). | 
-| `Duracion_clasificacion` | Duración del evento | Rangos cualitativos discretos de duración (Ej: Corta, Media, Larga). | 
-| `duration_category_detailed` | Duración detallada | Rangos cualitativos ampliados pero disjuntos y limitados en número. | 
-| `shape_grouped` | Forma del fenómeno | Agrupaciones de las formas reportadas (en caso de usarse como *feature* $X$). | 
 
 > **Nota sobre `state`:**: se intentará priorizar `state_grouped` o `us_region`.
 
@@ -159,7 +142,12 @@ Las siguientes variables del dataset presentan niveles de cardinalidad controlad
 | ----- | ----- | ----- | 
 | `city` | Alta cardinalidad (miles de ciudades únicas). OHE crearía una matriz hiper-dispersa (*sparse matrix*) con riesgo severo de *overfitting*. | *Target Encoding*, *Frequency Encoding* o descarte. | 
 | `duration_seconds` | Es una variable **numérica continua**, no categórica. | Escalado cuantitativo (`StandardScaler`, `MinMaxScaler`) o transformación logarítmica. | 
-| `is_weekend` | Es una variable binaria intrínseca ($0/1$ o `True/False`). | No requiere transformación adicionales. | 
+| `is_weekend` | Es una variable binaria intrínseca ($0/1$ o `True/False`). | No requiere transformación adicionales. |
+
+**Se realiza Ordinal Encoder**
+
+| `Duracion_clasificacion` | Duración del evento | Rangos cualitativos discretos de duración (Ej: Corta, Media, Larga). | 
+| `duration_category_detailed` | Duración detallada | Rangos cualitativos ampliados pero disjuntos y limitados en número. | 
 
 ---
 # MODELO APLICADO:
@@ -177,20 +165,18 @@ El desarrollo de este proyecto permitió aplicar las distintas etapas de un proc
 
 **Cumplimiento del objetivo del proyecto**
 
-Se logró desarrollar un modelo de clasificación multiclase capaz de intentar predecir la categoría *shape* (forma) de los reportes de avistamientos UFO/UAP/OVNI, basado en la variable objetivo *shape_grouped* utilizando información descriptiva y temporal de los registros históricos.
+Se logró desarrollar un modelo de clasificación multiclase capaz de intentar predecir la categoría *shape* (forma) de los reportes de avistamientos UFO/UAP/OVNI, basado en la variable objetivo *shape_grouped* utilizando información descriptiva y temporal de los registros históricos; implementando y evaluando un sistema de clasificación supervisada sobre datos reales aportados por los testigos de elos avistamientos.
 
-De esta manera, se cumplió el objetivo de implementar y evaluar un sistema de clasificación supervisada sobre datos reales aportados por los testigos de elos avistamientos.
 
 **Importancia del preprocesamiento de los datos**
 
 La etapa de limpieza y transformación resultó muy importante para mejorar la calidad del conjunto de datos. Se realizaron tratamientos de valores nulos, normalización de variables, transformación de atributos, ingeniería de características y reducción de categorías poco representadas.
-
 Estas decisiones permitieron construir un conjunto de datos más adecuado para el enfoque de entrenamiento del modelo.
+
 
 **Resultados y evaluación de los modelos**
 
 Se observó que el tratamiento del desbalance de clases influye significativamente en los resultados.
-
 El modelo Random Forest con balanceo permitió mejorar la capacidad de reconocer algunas categorías minoritarias, aunque esto también produjo un aumento de las falsas predicciones. Por ejemplo, la categoría Fireball (Bola de fuego) alcanzó un Recall del 53 %, pero una Precision del 18 %. Esto significa que el modelo consiguió recuperar una proporción mayor de los registros reales de esa categoría, aunque también clasificó incorrectamente numerosos registros como Fireball.
 
 Por lo tanto, los resultados deben interpretarse considerando conjuntamente Precision, Recall y F1-score, y no únicamente la exactitud general (*Accuracy*).
@@ -203,17 +189,13 @@ En consecuencia, el modelo no debe considerarse un sistema de identificación de
 
 Su alcance se limita exclusivamente a clasificar los reportes según las formas descriptas por los testigos.
 
+
 **Aporte y posibilidades de desarrollo**
 
 Más allá de las limitaciones encontradas, el proyecto permitió construir una base de trabajo para continuar investigando la aplicación de técnicas de Ciencia de Datos y Aprendizaje Automático sobre registros históricos de avistamientos UFO/UAP.
 
-Los resultados obtenidos constituyen un punto de partida para experimentar con nuevas características, técnicas de balanceo, selección de variables y algoritmos de clasificación.
+Los resultados obtenidos son un punto de partida para experimentar con nuevas características, técnicas de balanceo, selección de variables y algoritmos de clasificación.
 
-**Conclusión final**
-
-En términos generales, el proyecto permitió cumplir el propósito académico y técnico de desarrollar un proceso completo de aprendizaje automático supervisado aplicado a un problema de clasificación multiclase.
-
-Si bien los resultados del modelo seleccionado todavía presentan limitaciones en su capacidad predictiva, el trabajo permitió comprender la importancia de la calidad de los datos, el tratamiento del desbalance de clases y la correcta interpretación de las métricas de evaluación.
 
 ## Conclusiones generales sobre el modelo
 
@@ -223,7 +205,36 @@ Eso podría estar relacionado a la naturaleza del problema: la forma reportada e
 
 Por eso dicho modelo no alcanza a predecir con precisión la forma de un objeto volador no identificado a partir de las características temporales, geográficas, de duración de los avistamientos que se presentaron como variables de entrada, pues la forma ( especificadas en shape o shape_grouped) es una percepción del testigo, no una consecuencia de la hora, la estación o el estado donde ocurre. Esas variables describen el contexto, no el objeto.
 
-El modelo alcanzó una accuracy de 21,1 % y un F1 macro de 0,19 sobre siete clases, un desempeño comparable al de una predicción aleatoria. Observando las métricas obtenidas, el “buen” desempeño de Fireball (recall 53 %) podría estar relacionado con el balanceo de clases, su precisión es de sólo 18 %, o sea que el modelo identifica una parte de los casos reales, pero también clasifica incorrectamente como Fireball muchos registros de otras categorías. Lo mismo ocurre con las formas Disc y Triangle. El rendimiento limitado no se debe principalmente a la elección del algoritmo, sino a la baja relación entre las variables predictoras y la variable objetivo.
 
-El rendimiento obtenido indica que todavía existen oportunidades de mejora mediante la experimentación con otros algoritmos y diferentes estrategias de tratamiento de las variables que no implementamos como por ejemplo tomar como variable objetivo 'duration_seconds' como un problema de regresion, también realizar pruebas con modelos de aprendizaje no-supervisados. Otra alternativa que puede quedar como objeto de otra línea de investigación es analizar el texto de los reportes (columna ´summary´ en el dataset original) mediante análisis de texto con modelos NLP (Procesamiento del Lenguaje Natural), que es información importante de estos eventos pero que el modelo actualmente no ve porque no fue considerada dentro del alcance del proyecto; todas estas propuestas quedan delimitadas para otros proyectos en el futuro.
+En términos generales, el proyecto permitió cumplir el propósito académico y técnico de desarrollar un proceso completo de aprendizaje automático supervisado aplicado a un problema de clasificación multiclase.
+Si bien los resultados del modelo seleccionado todavía presentan limitaciones en su capacidad predictiva, el trabajo permitió comprender la importancia de la calidad de los datos, el tratamiento del desbalance de clases y la correcta interpretación de las métricas de evaluación.
+
+---
+
+# Abstract
+
+This project focuses on the analysis and classification of Unidentified Flying Object (UFO) sighting reports using supervised machine learning techniques. The dataset, obtained from the National UFO Reporting Center (NUFORC), underwent a data preprocessing and exploratory data analysis (EDA) process to identify patterns, examine data quality, and understand the distribution of reported sightings.
+
+The main objective was to develop a multiclass classification model capable of predicting the reported shape category of UFO sightings based on structured features, including temporal, geographical, and duration-related variables.
+
+Several supervised machine learning algorithms were explored and evaluated, with Random Forest selected as the main classification model. Model performance was assessed using a confusion matrix and classification metrics such as accuracy, precision, recall, and F1-score, with particular attention to the challenges associated with class imbalance.
+
+The results showed limited predictive performance, highlighting the difficulty of accurately classifying reported shapes using only structured information. Nevertheless, the model identified certain patterns and demonstrated the feasibility of applying machine learning techniques to organize and classify UFO sighting reports automatically.
+
+The project concludes that, although predictive accuracy remains limited, the dataset provides valuable descriptive insights and offers opportunities for further research. Future improvements could include incorporating Natural Language Processing (NLP) techniques to analyze witness descriptions and exploring additional external data sources to enrich the predictive features.
+
+
+# Resumen (Abstract)
+
+Este proyecto se centra en el análisis y la clasificación de reportes de avistamientos de Objetos Voladores No Identificados (OVNIs) mediante técnicas de aprendizaje automático supervisado. El conjunto de datos, obtenido del National UFO Reporting Center (NUFORC), fue sometido a un proceso de limpieza y preprocesamiento de datos, así como a un análisis exploratorio (EDA), con el propósito de identificar patrones, examinar la calidad de los datos y comprender la distribución de los avistamientos reportados.
+
+El objetivo principal fue desarrollar un modelo de clasificación multiclase capaz de predecir la categoría de forma reportada en los avistamientos de OVNIs, a partir de características estructuradas que incluyen variables temporales, geográficas y relacionadas con la duración de los avistamientos.
+
+Se exploraron y evaluaron diferentes algoritmos de aprendizaje automático supervisado, seleccionando Random Forest como modelo principal de clasificación. Su rendimiento se evaluó mediante una matriz de confusión y métricas de clasificación como exactitud (Accuracy), precisión (Precision), exhaustividad (Recall) y puntuación F1 (F1-score), prestando especial atención a las dificultades asociadas al desbalance de clases.
+
+Los resultados mostraron un rendimiento predictivo limitado, evidenciando la dificultad de clasificar correctamente las formas reportadas utilizando únicamente información estructurada. No obstante, el modelo logró identificar ciertos patrones y demostró la viabilidad de aplicar técnicas de aprendizaje automático para organizar y clasificar automáticamente los reportes de avistamientos de OVNIs.
+
+Se concluye que, aunque la capacidad predictiva del modelo continúa siendo limitada, el conjunto de datos proporciona información descriptiva valiosa y ofrece oportunidades para futuras investigaciones. Entre las posibles mejoras se contempla la incorporación de técnicas de Procesamiento del Lenguaje Natural (NLP) para analizar las descripciones de los testigos, así como la integración de fuentes de datos externas que permitan enriquecer las características utilizadas para la predicción.
+
+---
 

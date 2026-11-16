@@ -2,9 +2,15 @@
 ![Banner del proyecto](reports/figures/01%20-%20BANNER.png)
 
 ---
+## Clasificación de la forma reportada en avistamientos de OVNIS en Estados Unidos mediante aprendizaje automático.
 
-## Autor: Ariel Tuñon
-### Parcial de Aprendizaje Automático 2026
+**Modelo de aprendizaje automático supervisado orientado a clasificar las formas reportadas en avistamientos de OVNIs mediante técnicas de clasificación multiclase.**
+
+<br/>
+![Status](https://img.shields.io/badge/estado-completado-success?style=flat-square)
+<br/>
+
+### Autor: Ariel Tuñon
 ### Politécnico Superior Malvinas Argentinas
 
 ---
@@ -51,17 +57,18 @@ características temporales, geográficas, de duración de los avistamientos?
 ## Tipo de problema
 
 
-Clasificación supervisada multiclase
+**Clasificación supervisada multiclase**
 
 
 ## Objetivo General
 
-Intentar clasificar la categoría de la forma de un reporte mediante la aplicación de técnicas de Aprendizaje Automático supervisado mediante clasificación multiclase. Se busca identificar patrones y evaluar la capacidad de los modelos para predecir la forma reportada del objeto (shape) según las características disponibles.
+Aplicar técnicas de Aprendizaje Automático supervisado, mediante un modelo de clasificación multiclase, para intentar identificar la categoría correspondiente a la forma reportada en los registros de avistamientos.
 
 ![Imagen de portada](reports/figures/02%20-%20formas%20-%20shape.jpg)
 
 [⬆️ Volver al índice](#Índice)
 
+S
 ### Objetivos específicos
 
 Desarrollar un modelos de aprendizaje automático que permita predecir la forma reportada por los testigos en dichos avistamientos, a partir de las características disponibles en el conjunto de datos.
@@ -171,17 +178,19 @@ PROYECTO_APRENDIZAJE_AUTOMATICO/
         ├── 15-HEATMAP_AVISTAMIENTOS POR DIA Y HORA.jpg
         └── 16-VIDEO-AA-Tuñon_2026.MP4
 ```
-Tecnologías Utilizadas
+### Tecnologías Utilizadas
 
-- Python
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
-- Scikit-Learn
-- Jupyter Notebook
-- Git
-- GitHub
+<br/>
+![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=plotly&logoColor=white)
+![Seaborn](https://img.shields.io/badge/Seaborn-4C72B0?style=for-the-badge&logo=python&logoColor=white)
+![Scikit--Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)
+![Jupyter Notebook](https://img.shields.io/badge/Jupyter_Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+<br/>
 
 [⬆️ Volver al índice](#Índice)
 ---
